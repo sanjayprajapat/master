@@ -1,0 +1,71 @@
+.THIS.canban-container{
+    width:100%;
+    height: -webkit-fill-available;    
+    overflow: auto;
+}
+.THIS .kanbanContainer {
+    display: -webkit-box;
+    margin-top: 1rem;
+    width: 100%!important;
+    overflow-x : auto !important;
+    overflow-y : hidden;
+    height:100%!important; 
+    min-height:50vh;
+}
+.THIS .kanbanStoryBlock{  
+    min-width:25%;
+    padding-left:1%;
+    padding-right:1%;
+    width: 20%;                
+}
+.THIS .droparea {   
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+.THIS .designclassLeft {
+    border-radius: .25rem;
+    width: 100%;
+    padding-top:0.25rem;
+    padding-right: 0.25rem;
+    padding-bottom: 0.25rem;
+    background:rgba(98, 101, 180, 0.08);
+}
+.THIS .headclass {    
+    border-radius: .2rem;    
+    height: 47px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-content: center !important;
+    align-items: center !important;
+    margin: auto !important;
+    padding-left: 0.4rem !important;
+    padding-right: 0.4rem !important;
+}
+.THIS .CenterText1{
+    height: 24px;   
+    align-items: flex-end;    
+    color: #000000;
+}
+.THIS .CenterText2{       
+    color: #59595C;
+} 
+.THIS .CenterText3{
+    color: rgba(98, 101, 180, 1);
+}
+.THIS .centerText0{
+    line-height:32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 32px;  
+    background: rgba(22, 170, 186, 0.2);
+    border:none;
+    border-radius: 7.60047px;
+    text-align: center;
+    color: #000000;
+    width:100%;   
+}
+.THIS .temp_tile{
+    background:black;
+    color:white;
+}

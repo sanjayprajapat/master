@@ -1,0 +1,230 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.slds-modal__container.MyShoppingAppModal_Container {
+    width: 40%;
+}
+
+.MyShoppingAppModal_Header {
+    border-bottom: none;
+    padding: 15px 40px 15px 40px;
+    background: #353535;
+    height: auto;
+    min-height: 40px;
+    border-radius: 0px;
+}
+
+.MyShoppingAppModal_Content {
+    padding: 15px 40px 15px 40px;
+    border-radius: 0px;
+    background: #353535;
+    min-height: 200px;
+}
+
+.MyShoppingAppModal_Footer {
+    padding: 15px 40px 15px 40px;
+    border-top: none;
+    background: #353535;
+}
+
+.MyShoppingAppModal_Header_Heading {
+    font-family: "Poppins-Regular";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    float: left;
+    color: #BDC3C7;
+}
+
+.MyShoppingAppModal_Close {
+    float: right;
+}
+
+.MyShoppingAppModal_Close>.slds-button {
+    border: none;
+}
+
+.MyShoppingAppModal_Close>.slds-button>lightning-primitive-icon>svg {
+    fill: #BDC3C7;
+}
+
+.MyShoppingAppModal_Close:hover {
+    fill: #F7CA18;
+}
+
+.MyShoppingApp_Close:focus {
+    fill: #F7CA18
+}
+
+.MyShoppingAppModal_Close:active {
+    fill: #F7CA18;
+}
+
+.MyShoppingAppModal_CloseButton>.slds-button {
+    color: #BDC3C7;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid #F7CA18;
+    background-color: transparent;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.MyShoppingAppModal_CloseButton>.slds-button:hover {
+    color: #000 !important;
+    background-color: transparent;
+    text-shadow: nthree;
+}
+
+.MyShoppingAppModal_CloseButton>.slds-button:hover::before {
+    left: 0%;
+    right: auto;
+    width: auto;/*100%*/
+}
+
+.MyShoppingAppModal_CloseButton>.slds-button:before {
+    content: '';
+    color: #000 !important;
+    background: #F7CA18;
+    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/*.Task_Body2_Regular,
+.Task_Body2_Semibold {
+    color: #BDC3C7;
+}*/
+.textColor{
+    color: #BDC3C7;
+}
+.horizontalLine{
+    width: 100%;
+    border-top: 1px solid;
+    color:#BDC3C7;
+}
+.cartDetail_Block{
+    text-align: left!important;
+    padding-left:10px;
+    padding-right:10px;
+}
+.disableButton > .slds-button{
+    opacity: 0.5;
+}
+.removeItemBlock{       
+    justify-content: flex-end;        
+}
+
+
+/***************************************    Responsive CSS   *********************************************/
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .slds-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slds-modal__container.MyShoppingAppModal_Container {
+        width: 100%;
+    }
+
+    .MyShoppingAppModal_Header {
+        padding: 15px;
+    }
+
+    .MyShoppingAppModal_Content {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .MyShoppingAppModal_Footer {
+        padding: 15px;
+    }
+    p{
+        text-align: center !important;
+    }
+    .cartAddRemoveButtonBlock{
+        justify-content: flex-start!important;
+    }    
+
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .slds-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slds-modal__container.MyShoppingAppModal_Container {
+        width: 100%;
+    }
+
+    .MyShoppingAppModal_Header {
+        padding: 15px;
+    }
+
+    .MyShoppingAppModal_Content {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .MyShoppingAppModal_Footer {
+        padding: 15px;
+    }
+    p{
+        text-align: center !important;
+    }
+    .cartAddRemoveButtonBlock{
+        justify-content: flex-start;
+    }
+
+}
+
+@media(max-width: 319px) {
+    .slds-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slds-modal__container.MyShoppingAppModal_Container {
+        width: 100%;
+    }
+
+    .MyShoppingAppModal_Header {
+        padding: 10px;
+    }
+
+    .MyShoppingAppModal_Content {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .MyShoppingAppModal_Footer {
+        padding: 10px;
+    }
+    p{
+        text-align: center !important;
+    }
+    .cartAddRemoveButtonBlock{
+        justify-content: flex-start;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1023px) {}

@@ -1,0 +1,84 @@
+<aura:component controller="LookupSearchComponentController">
+    <aura:attribute name="objectName" type="String" default="Account"/>
+    <aura:attribute name="fieldName" type="String" default="Name"/>
+    <aura:attribute name="Label" type="String" default="Enter Account Name"/>
+    <aura:attribute name="placeholder" type="String" default="Account Name"/>
+    <aura:attribute name="recordDisplaySize" type="Integer" default="7"/>
+    <aura:attribute name="iconName" type="String" default="action:new_account"/>
+    <aura:attribute name="selectRecordId" type="String"/>
+    <aura:attribute name="selectRecordName" type="String"/>   
+    <aura:attribute name="listOfRecords" type="List"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>   
+    
+    
+    <div class="slds-form-element">            
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">                    
+                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aura:id="mainBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                        
+                        <!--To Show Icon In Front of Record Name in Input Box-->
+                        <aura:if isTrue="{!!empty(v.selectRecordId)}">
+                            <span class="slds-icon_container slds-icon-utility-search slds-input__icon iconheight">
+                                <lightning:icon class="slds-icon slds-icon slds-icon_small slds-icon-text-default" iconName="{!v.iconName}" size="x-small" alternativeText="icon" />
+                            </span> 
+                        </aura:if>
+                        
+                        <!--Input Box-->
+                        <lightning:input required="true" aura:id="userinput" label="{!v.Label}" placeholder="{!v.placeholder}" name="searchText" onchange="{!c.searchRecords}" value="{!v.selectRecordName}" class="SearchInputBox"/> 
+                        
+                        <!--To Show Search Icon and Close Icon-->
+                        <aura:if isTrue="{!empty(v.selectRecordId)}">
+                            
+                            <!--Search Icon-->
+                            <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right iconheight">
+                                <lightning:icon class="slds-icon slds-icon slds-icon_small slds-icon-text-default" iconName="utility:search" size="x-small" alternativeText="icon" />
+                            </span>
+                            
+                            <!--CloseButton Icon-->
+                            <aura:set attribute="else">
+                                <button class="slds-input__icon slds-input__icon_right slds-button slds-button_icon iconheight" onclick="{!c.resetData}">
+                                    <lightning:icon class="slds-icon slds-icon slds-icon_small slds-icon-text-default" iconName="utility:clear" size="x-small" alternativeText="icon" />
+                                    <span class="slds-assistive-text">Clear</span></button>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    
+                    <!-- ListBox of Records -->
+                    <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-with-icon-5 slds-dropdown_fluid" role="listbox" >
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <aura:iteration items="{!v.listOfRecords}" var="record" indexVar="hdtv">
+                                <li role="presentation" class="slds-listbox__item">
+                                    
+                                    <div id="{!record.recId}" data-name="{!record.recName}" onclick="{!c.setSelectedRecord}" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                        <span class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-account">
+                                                <lightning:icon iconName="{!v.iconName}" class="slds-icon slds-icon slds-icon_small slds-icon-text-default" size="x-small"/>
+                                            </span>
+                                        </span>
+                                        <span class="slds-media__body">
+                                            <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!record.recName}</span>
+                                            <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{!v.objectName} • {!record.recName}</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </aura:iteration>
+                            <aura:if isTrue="{!and(v.listOfRecords.length == 0 , !v.showSpinner)}">
+                                No Records found.
+                            </aura:if>
+                            
+                            
+                            <!--To Show and Hide Spinner when Record Loading-->
+                            <aura:if isTrue="{!v.showSpinner}">
+                                <lightning:spinner aura:id="mySpinner" alternativeText="Processing.." title="Processing.." variant="brand" size="large"/>
+                                Loading...
+                            </aura:if>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</aura:component>

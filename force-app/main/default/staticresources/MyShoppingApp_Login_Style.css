@@ -1,0 +1,694 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+::-webkit-scrollbar {
+    display:none!important;
+}
+
+.imagebLock {
+    display: flex;
+    justify-content: center;
+
+    background: #F3524C;
+}
+
+.TitleHeading {
+    font-family: "Poppins-Regular" !important;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 51px;
+    letter-spacing: 0em;
+    position: absolute;
+    /*top: 75%;*/
+
+    padding-top: 30px;
+    color: #ffffff;
+}
+
+.secondDiv {
+    background: #ffffff;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.signInText {
+    text-align: center !important;
+}
+
+.loginDetailCard {
+    width: 480px;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #E5E5EA;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 2%;
+    margin-top: 40px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.inputBoxCss>label {
+    float: left !important;
+    color: #000000;
+    font-family: "Poppins-Semibold";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+}
+
+.inputBoxCss>.slds-form-element__control.slds-grow>input {
+    height: 48px;
+    width: 100%;
+    border: 1px solid #C7C7CC !important;
+    box-sizing: border-box !important;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25) !important;
+    border-radius: 4px !important;
+    color: #000000;
+    font-family: "Poppins-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.signInButtonBlock {
+    margin-top: 10px;
+}
+
+.signInButton>.slds-button {
+    background: #166F9C;
+    border-radius: 4px;
+    width: 100%;
+    height: 44px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ffffff;
+}
+
+.checkboxcss {
+    text-align: left !important;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 10px;
+}
+
+.childCheck .slds-checkbox .slds-checkbox__label .slds-form-element__label {
+    color: #000000 !important;
+    font-family: "Poppins-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.childCheck.slds-has-error>.slds-form-element__help {
+    font-family: "Poppins-Semibold" !important;
+    font-size: 12px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: 18px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #FF0000;
+    margin-top: 40px;
+    width: max-content;
+    /* To Remove Background when double click on Checkboxwhen Error occure */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.childCheck>.slds-form-element__control>.slds-checkbox>.slds-checkbox__label>.slds-checkbox_faux {
+    background: #FFFFFF;
+    border: 1px solid #C7C7CC !important;
+    box-sizing: border-box;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.fogotPassowrdBlock {
+    margin-top: 10px;
+}
+
+.forgotpasscss>.slds-button {
+    text-decoration-line: underline;
+    color: #166F9C;
+    font-family: "Poppins-Semibold";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-decoration: underline;
+}
+
+.forgotpasscss>.slds-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+.BottomSection {
+    width: 480px;
+    height: auto;
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 2%;
+    margin-top: 40px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divsalesforce {
+    text-align: center;
+    color: #000000;
+    font-family: "Poppins-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+}
+
+.signInWithSalesforceBlock {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signInWithSalesforce>.slds-button {
+    height: 44px;
+    width: 100%;
+    background: #0F9AD6;
+    border-radius: 4px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ffffff;
+}
+
+.signInWithSalesforce>.slds-button>lightning-primitive-icon>svg {
+    height: 22px !important;
+    width: 31px !important;
+    fill: #ffffff;
+}
+
+.registerCss {
+    text-align: center;
+    color: #000000;
+    font-family: "Poppins-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    margin-top: 20px;
+}
+
+.inputBoxCss.slds-has-error>.slds-form-element__help {
+    font-family: "Poppins-Semibold" !important;
+    font-size: 12px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: 18px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #FF0000 !important;
+}
+
+.errorMSG {
+    color: #FF0000 !important;
+    text-align: center !important;
+}
+
+
+/*******************************     Registeration form css   ***************************************/
+.successBox {
+    margin-top: 40%;
+    text-align: center;
+}
+
+.LiClass {
+    max-width: 8% !important;
+    width: 8% !important
+}
+
+/***************************************    Responsive CSS   *********************************************/
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .imagebLock {
+        display: none;
+    }
+
+    .loginDetailCard {
+        width: 100%;
+    }
+
+    .BottomSection {
+        width: 100%;
+    }
+
+    .secondDiv {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+@media(max-width: 319px) {
+
+    .imagebLock {
+        display: none;
+    }
+
+    .loginDetailCard {
+        width: 100%;
+    }
+
+    .BottomSection {
+        width: 100%;
+    }
+
+    .secondDiv {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .imagebLock {
+        display: none;
+    }
+
+    .loginDetailCard {
+        width: 100%;
+    }
+
+    .BottomSection {
+        width: 100%;
+    }
+
+    .secondDiv {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+/* 
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .imagebLock {
+        display: none;
+    }
+
+    .loginDetailCard {
+        width: 100%;
+    }
+
+    .BottomSection {
+        width: 100%;
+    }
+
+    .secondDiv {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    slot[community_layout-section_section] {
+        display: grid !important;
+    }
+
+}
+
+/***************************** New Dark Ui CSS *****************************************/
+.FirstLayout {   
+    height: 100%;
+    width: 100%;
+}
+
+.firstBlock {
+    background-color: yellow;
+    height: 100%;
+}
+
+.secondBlock {
+    height: 100%;
+    background-color: #262729;
+    padding: 5%;
+    overflow: auto;
+}
+
+.signUp_Button>.slds-button {
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    width: 98px;
+    height: 44px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ffffff;
+}
+
+.signIn_Button>.slds-button {
+    float: right;
+    background: #616265;
+    border-radius: 4px;
+    width: 98px;
+    height: 44px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ffffff;
+}
+.signUp_Button_OnRegistration>.slds-button {   
+    background: #616265;
+    border-radius: 4px;
+    width: 98px;
+    height: 44px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ffffff;
+}
+.signIn_Button_OnRegistration>.slds-button {
+    float: right;
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    width: 98px;
+    height: 44px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ffffff;
+}
+
+.DarkloginCard {
+    width: 60%;
+    height: auto;
+    background: transparent;
+    border: 1px solid #E5E5EA;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding: 5%;
+    /*margin-top: 40px;*/
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Dark_InputBox>.slds-form-element__control.slds-grow>input {
+    height: 48px;
+    width: 100%;
+    background-color: #36373B;
+    border: 1px solid #C7C7CC !important;
+    box-sizing: border-box !important;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25) !important;
+    border-radius: 4px !important;
+    color: #ffffff;
+    font-family: "Poppins-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.Dark_CheckBoxBlock {
+    text-align: left !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.Dark_CheckBox .slds-checkbox .slds-checkbox__label .slds-form-element__label {
+    color: #ffffff !important;
+    font-family: "Poppins-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.Dark_CheckBox.slds-has-error>.slds-form-element__help {
+    font-family: "Poppins-Semibold" !important;
+    font-size: 12px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: 18px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #FF0000;
+    margin-top: 40px;
+    width: max-content;
+    /* To Remove Background when double click on Checkboxwhen Error occure */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.Dark_CheckBox>.slds-form-element__control>.slds-checkbox>.slds-checkbox__label>.slds-checkbox_faux {
+    background: transparent;
+    border: 1px solid #C7C7CC !important;
+    box-sizing: border-box;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.Dark_forgotPassword>.slds-button {
+    text-decoration-line: underline;
+    color: #FFFF00;
+    font-family: "Poppins-Semibold";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-decoration: underline;
+}
+
+.Dark_forgotPassword>.slds-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.Dark_SignInWithSalesforce{
+    width:100%;
+}
+.Dark_SignInWithSalesforce>.slds-button {
+    background: #616265;
+    border-radius: 4px;
+    width: 100%;
+    height: 44px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #ffffff;
+}
+.Dark_SignInWithSalesforceBlock{
+    display: flex;    
+    align-items: center;
+    width: 60%;    
+    text-align: center;
+    color: #ffffff;
+    font-family: "Poppins-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    margin: auto;
+}
+.HRClass{
+    width: 50%;
+}
+.colorWhite_Text{
+    color:#ffffff;
+    text-align: center;
+}
+.colorWhite{
+    color:#ffffff;
+}
+
+/***************************************    Dark Theme Responsive CSS   *********************************************/
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .firstBlock {
+        display: none;
+    }
+    .DarkloginCard ,.Dark_SignInWithSalesforceBlock{
+        width: 100%;
+    }
+    .signUp_Button>.slds-button {
+        justify-content: flex-start;
+        padding-left: 1px;
+    }
+}
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {  
+    
+    .firstBlock {
+        display: none;
+    }
+    .DarkloginCard  ,.Dark_SignInWithSalesforceBlock{
+        width: 100%;
+    }
+    .signUp_Button>.slds-button {
+        justify-content: flex-start;
+        padding-left: 1px;
+    }
+    
+  }
+
+@media(max-width: 319px) {
+    .firstBlock {
+        display: none;
+    }
+
+    .DarkloginCard  ,.Dark_SignInWithSalesforceBlock{
+        width: 100%;
+    }
+
+    .signUp_Button>.slds-button {
+        justify-content: flex-start;
+        padding-left: 1px;
+    }
+
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+    .firstBlock {
+        display: none;
+    }
+
+    .DarkloginCard  ,.Dark_SignInWithSalesforceBlock{
+        width: 100%;
+    }
+
+    .signUp_Button>.slds-button {
+        justify-content: flex-start;
+        padding-left: 1px;
+    }
+    .secondBlock{
+        padding-top: 5%;
+        padding-bottom: 5%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {    
+    .firstBlock {
+        display: none;
+    }
+
+    .DarkloginCard  ,.Dark_SignInWithSalesforceBlock{
+        width: 100%;
+    }
+
+    .signUp_Button>.slds-button {
+        justify-content: flex-start;
+        padding-left: 1px;
+    }
+    .secondBlock{
+        padding-top: 5%;
+        padding-bottom: 5%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+    
+  }

@@ -1,0 +1,27 @@
+.THIS .ShoppingApp_header {    
+    width: 100%;    
+    background:#101010;
+    border:none;
+    /*New Added to fix header*/
+    overflow: hidden;
+    position: fixed;
+    z-index: 996;
+}
+.THIS .ShoppingApp_body{ 
+   /* position: relative;  
+    height: 100%;*/
+    width: 100%;
+    background-color: #101010;    
+}
+.THIS .ShoppingApp_footer{   
+    width: 100%;
+    min-height: 70px;  
+    background-color:#101010; 
+}
+.THIS .sideMenuStyle{
+    position: fixed;
+    z-index: 996;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+}

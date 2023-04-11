@@ -1,0 +1,24 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="temperature" default="16" type="Integer" description="Temperature that will change on sliding the bar." />
+    <aura:attribute name="minTempVal" default="16" type="Integer" description="minimum temperature value" />
+    <!--<ltng:require styles="{!$Resource.Slider}" /> -->
+    
+    <div>
+        
+        <div class="carSlide">
+            <img src="https://as2.ftcdn.net/v2/jpg/02/10/34/61/1000_F_210346183_1DERyTayP9k6HgUobmJXmwbslozCfGIX.jpg" class="carimg" data-id="car-slide"/>
+        </div>
+        
+        <div >
+            <div><b>Set Temperature to:</b></div>
+            <div>{!v.temperature}&deg;C</div>
+        </div>
+        
+        <div class="tempSclae">
+            <div class="slidecontainer" aura:id="sliderDiv" id="sliderDiv" style="z-index:1">
+                <input type="range" min="16" max="32" steps="1" value="{!v.temperature}" class="slider" id="myRange" onchange="{!c.showVal}"/>
+            </div>
+        </div> 
+    </div>
+    
+</aura:component>

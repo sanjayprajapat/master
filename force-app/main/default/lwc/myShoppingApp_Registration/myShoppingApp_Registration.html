@@ -1,0 +1,214 @@
+<template>
+    <div style="width:100%;height:100%;">
+
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium" class="spinnerClass"></lightning-spinner>
+        </template>
+
+        <!--<lightning-layout multiple-rows class="fullHeight">
+            <lightning-layout-item size="12" large-device-size="5" class="fullHeight imagebLock">
+            -->
+        <!--<img src={sideImage} class="fullHeight">-->
+        <!--    <div class="TitleHeading">My Shopping App</div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="7"
+                class="secondDiv fullHeight">
+                <template if:true={showSuccess}>
+                    <div id="success" class="successBox Task_H1_Regular">
+                        <lightning-formatted-text value="Thanks for registering."></lightning-formatted-text>
+                        <br />
+                        <lightning-formatted-text value=" Please check your email for next steps.">
+                        </lightning-formatted-text>
+                        <br />
+                    </div>
+                </template>
+                <template if:false={showSuccess}>
+                    <div class="signInText Task_H2_Regular">Register</div>
+                    <div class="loginDetailCard">
+                        <lightning-layout multiple-rows>
+                            <template if:true={showError}>
+                                <lightning-layout-item size="12">
+                                    <div class="Task_Subtitle2_Semibold errorMSG">{errorMessage}</div>
+                                </lightning-layout-item>
+                            </template>
+
+                            <lightning-layout-item size="12">
+                                <div onkeyup={onKeyUp}>
+                                    <lightning-input value="" data-id="firstname" label="First Name" name="FirstName"
+                                        required="true" class="inputBoxCss" onchange={checkValidation}
+                                        onblur={checkValidation}>
+                                    </lightning-input>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12">
+                                <div onkeyup={onKeyUp}>
+                                    <lightning-input value="" data-id="lastname" label="Last Name" name="LastName"
+                                        required="true" class="inputBoxCss" onchange={checkValidation}
+                                        onblur={checkValidation}>
+                                    </lightning-input>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12">
+                                <div onkeyup={onKeyUp}>
+                                    <lightning-input value="" data-id="emailAddress" label="Email Address"
+                                        name="EmailAdd" class="inputBoxCss" required="true" onchange={checkValidation}
+                                        onblur={checkValidation}>
+                                    </lightning-input>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12">
+                                <div>
+                                    <ul class="slds-list_horizontal">
+                                        <li class="LiClass">
+                                            <lightning-input name="TCcheck" type="checkbox" class="childCheck"
+                                                data-id="myCheck" onchange={termsChanged}></lightning-input>
+                                        </li>
+                                        <li>
+                                            <div class="Task_Body1_Regular"> I confirm that I have read and agree to the
+                                                <lightning-button variant="base" label="terms and conditions"
+                                                    title="terms and conditions" class="forgotpasscss"
+                                                    onclick={toggleModal}></lightning-button>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" class="signInButtonBlock">
+                                <lightning-button name="CreateAccount" label="Create Account" title="Create Account"
+                                    class="signInButton" onclick={createAccount}></lightning-button>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                    <div class="BottomSection">
+                        <div class="divsalesforce">
+                            <Span>Or, sign in with Salesforce:</Span>
+                        </div>
+                        <div class="signInWithSalesforceBlock">
+                            <lightning-button icon-name="utility:salesforce1" label="Sign In With Salesforce"
+                                title="Sign In With Salesforce" class="signInWithSalesforce"
+                                onclick={navigateToSalesforce}>
+                            </lightning-button>
+                        </div>
+                        <div class="registerCss">
+                            <span>Already have an account? </span>
+                            <lightning-button variant="base" label="Sign in" title="Sign in" class="forgotpasscss"
+                                onclick={navigateToLogin}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+
+
+            </lightning-layout-item>
+        </lightning-layout> 
+        -->
+        <template if:true={showModal}>
+            <c-my-shopping-app_-terms-and-conditions></c-my-shopping-app_-terms-and-conditions>
+        </template>
+
+        <lightning-layout multiple-rows class="FirstLayout">
+            <lightning-layout-item flexibility="auto" size="12" large-device-size="4" class="firstBlock">
+
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size="12" large-device-size="8" medium-device-size="12"
+                class="secondBlock">
+                <template if:true={showSuccess}>
+                    <div id="success" class="successBox Task_H1_Regular">
+                        <lightning-formatted-text value="Thanks for registering."></lightning-formatted-text>
+                        <br />
+                        <lightning-formatted-text value=" Please check your email for next steps.">
+                        </lightning-formatted-text>
+                        <br />
+                    </div>
+                </template>
+                <template if:false={showSuccess}>
+                    <lightning-layout multiple-rows class="">
+                        <lightning-layout-item size="12">
+                            <lightning-button name="CreateAccount" label="Sign Up" title="Sign Up" class="signUp_Button_OnRegistration"
+                                onclick={createAccount}></lightning-button>
+                            <lightning-button name="SignIn" label="Sign In" title="Sign In" class="signIn_Button_OnRegistration"
+                                onclick={navigateToLogin}></lightning-button>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" class="slds-p-top_x-large">
+                            <lightning-layout multiple-rows class="DarkloginCard">
+                                <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                    <template if:true={showError}>
+                                        <lightning-layout-item size="12">
+                                            <div class="Task_Subtitle2_Semibold errorMSG">{errorMessage}</div>
+                                        </lightning-layout-item>
+                                    </template>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                    <div onkeyup={onKeyUp}>
+                                        <lightning-input value="" data-id="firstname" label="First Name"
+                                            name="FirstName" required="true" onchange={checkValidation}
+                                            onblur={checkValidation} class="Dark_InputBox" variant="label-hidden"
+                                            placeholder="Please enter your first name">
+                                        </lightning-input>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                    <div onkeyup={onKeyUp}>
+                                        <lightning-input value="" data-id="lastname" label="Last Name" name="LastName"
+                                            required="true" onchange={checkValidation} onblur={checkValidation}
+                                            class="Dark_InputBox" variant="label-hidden"
+                                            placeholder="Please enter your last name">
+                                        </lightning-input>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                    <div onkeyup={onKeyUp}>
+                                        <lightning-input value="" data-id="emailAddress" label="Email Address"
+                                            name="EmailAdd" required="true" onchange={checkValidation}
+                                            onblur={checkValidation} class="Dark_InputBox" variant="label-hidden"
+                                            placeholder="Please enter your email address">
+                                        </lightning-input>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                    <div>
+                                        <ul class="slds-list_horizontal">
+                                            <li class="LiClass">
+                                                <lightning-input name="TCcheck" type="checkbox" class="Dark_CheckBox"
+                                                    data-id="myCheck" onchange={termsChanged}></lightning-input>
+                                            </li>
+                                            <li>
+                                                <div class="Task_Body1_Regular" style="color:#ffffff;"> I confirm that I
+                                                    have read and agree to the
+                                                    <lightning-button variant="base" label="terms and conditions"
+                                                        title="terms and conditions" class="Dark_forgotPassword"
+                                                        onclick={toggleModal}></lightning-button>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" class="slds-p-vertical_medium">
+
+                            <div class="Dark_SignInWithSalesforceBlock">
+                                <hr class="HRClass">
+                                <span style="width: 100%;" class="slds-p-horizontal_small">Or, sign in with
+                                    Salesforce:</span>
+                                <hr class="HRClass">
+                            </div>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12">
+                            <div class="Dark_SignInWithSalesforceBlock">
+                                <lightning-button icon-name="utility:salesforce1" label="Sign In With Salesforce"
+                                    title="Sign In With Salesforce" class="Dark_SignInWithSalesforce"
+                                    onclick={navigateToSalesforce}>
+                                </lightning-button>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+
+</template>

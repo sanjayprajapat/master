@@ -1,0 +1,11 @@
+<apex:page >
+    <apex:includeScript value="{!$Resource.jQuery}"/> 
+    <apex:includeScript value="{!$Resource.requirejs}"/> 
+    
+    <script>
+    $j = jQuery.noConflict();
+    $j(document).ready(function() {
+        alert('loaded')
+    } );
+    </script>   
+</apex:page>

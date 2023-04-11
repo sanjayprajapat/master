@@ -1,0 +1,59 @@
+<aura:component controller="ServerSidePaginationApexClass" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />  
+   
+    <aura:attribute name="accountData" type="List"/>  
+    <aura:attribute name="accountColumns" type="List"/>
+    <aura:attribute name="sortBy" type="String" default="Name"/>
+    <aura:attribute name="sortDirection" type="String" default="ASC"/>
+   
+    <aura:attribute name="page" type="integer" description="using for store page Number"/>  
+    <aura:attribute name="pages" type="integer" description="using for store All Pages page Number"/>  
+    <aura:attribute name="total" type="integer" description="total records count store "/>  
+   
+    <div class="slds-page-header__title slds-truncate slds-p-around_small slds-align_absolute-center pgName" >
+        <b> SERVER-SIDE PAGINATION </b>
+    </div>
+   
+    <div class="slds-page-header__title slds-truncate slds-p-around_medium">
+        <p> Total {!v.total} Records </p>
+    </div>
+   
+    <form class="slds-form--stacked slds-p-around_medium">  
+       
+        <lightning:datatable aura:id="accountTable"
+                         keyField="Id"
+                         hideCheckboxColumn="false"
+                         columns="{!v.accountColumns}"
+                         data="{!v.accountData}"
+                         sortedBy="{!v.sortBy}"
+                         sortedDirection="{!v.sortDirection}"
+                         onsort="{!c.handleSort}"
+                          />
+       
+        <lightning:layout  class="slds-m-around_small slds-grid slds-wrap">
+            <lightning:layoutItem  class="slds-col slds-size--12-of-12 slds-small-size_6-of-12 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                <div class="slds-page-header__title slds-truncate">
+                    <ui:inputSelect aura:id="recordSize"  label="Display Record Per Page:" class="testDiv" change="{!c.onSelectChange}">
+                        <ui:inputSelectOption text="5" label="5" value="true"/>
+                        <ui:inputSelectOption text="10" label="10" />
+                        <ui:inputSelectOption text="15" label="15"/>
+                        <ui:inputSelectOption text="20" label="20"/>
+                    </ui:inputSelect>
+                </div>
+            </lightning:layoutItem >
+            <lightning:layoutItem  class="slds-col slds-size--12-of-12 slds-small-size_6-of-12 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                <div class="slds-align_absolute-center">
+                    <lightning:button disabled="{!v.page == 1}" onclick="{!c.gotoFirstPage}" class="slds-button slds-button_brand" label="First"/>  
+                    <lightning:button disabled="{!v.page == 1}" onclick="{!c.gotoPreviousPage}" class="slds-button slds-button_brand" label="Previous"/>  
+                    <lightning:button disabled="{!v.page == v.pages}" onclick="{!c.gotoNextPage}"  class="slds-button slds-button_brand" label="Next" aura:id="nextbtn" />  
+                    <lightning:button disabled="{!v.page == v.pages}" onclick="{!c.gotoLastPage}" class="slds-button slds-button_brand" label="Last"/>              
+                </div>
+            </lightning:layoutItem >
+            <lightning:layoutItem  class="slds-col slds-size--12-of-12 slds-small-size_6-of-12 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                <div class="slds-float_right">
+                    <p class="slds-page-header__title slds-truncate"> Page {!v.page} / {!v.pages}</p>
+                </div>
+            </lightning:layoutItem >
+        </lightning:layout>
+    </form>
+</aura:component>

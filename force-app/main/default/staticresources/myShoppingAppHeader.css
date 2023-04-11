@@ -1,0 +1,457 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+/************************Header Style*******************************/
+.mainContainer {
+    height: 100%;
+    padding: 10px;
+}
+
+.flexBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainHeader {
+    color: #6B6D70;
+    text-align: center !important;
+}
+
+.iconsCSS>lightning-primitive-icon>svg {
+    width: 40px;
+    height: 40px;
+    fill: #929991;
+}
+
+.iconsCSS_right>lightning-primitive-icon>svg {
+    width: 25px;
+    height: 25px;
+    fill: #000000;
+}
+
+.floatRight {
+    float: right;
+}
+
+.headerRightBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FA603C;
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+.avtarStyle {
+    height: 25px;
+    width: 25px;
+}
+
+.avtarStyle>abbr {
+    background-color: black;
+}
+
+.loginButton_Header>.slds-button {
+    text-decoration: none;
+    color: #000000;
+    font-family: "Poppins-Semibold";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+}
+
+.loginButton_Header>.slds-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/****************************************footer Style**************************************/
+.flexBoxInFooter {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-block {
+    background-color: #292C2F;
+    padding: 25px;
+    border-top-left-radius: 52px;
+    border-top-right-radius: 52px;
+}
+
+.dotInLi {
+    content: "\2022";
+}
+
+.font-color-White {
+    color: #ffffff;
+}
+
+.font-color-LightWhite {
+    color: #929991;
+}
+
+.flex-container {
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon-style {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-font-style {
+    color: white;
+    padding-left: 10px;
+}
+
+.roundDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    min-width: 50px;
+    height: 50px;
+    background: #929991;
+}
+
+.squareDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: #929991;
+    width: 50px;
+    height: 50px;
+}
+
+/*********************************Body Style**************************/
+.mainContainer_Body {
+    height: 100%;
+    width: 100%;
+}
+
+.topIconContainer {
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #E5E5EA;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 2%;
+    margin-top: 80px;/*40px;*/
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.bodyHeaderImage {
+    width: 60px;
+    height: 60px;
+}
+
+.bodyUlStyle {
+    text-align: center;
+}
+
+.MoreDown>lightning-primitive-icon>svg {
+    width: 12px;
+    height: 12px;
+}
+
+.body_carouselImage>div>a>.slds-carousel__content,.slds-carousel__autoplay {
+    display: none;
+}
+
+.body_carouselImage>div>.slds-carousel__panel-action {
+    border: none;
+}
+
+.body_carouselImage>div>.slds-carousel__panel-action>div>.slds-carousel__image>img {
+    border-radius: 6px;
+}
+
+.body_carousel>.slds-carousel>.slds-carousel__stage>.slds-carousel__indicators>.slds-carousel__indicator>.slds-carousel__indicator-action {
+    background-color: transparent;
+    border: 1px solid #FA603C;
+}
+
+.body_carousel>.slds-carousel>.slds-carousel__stage>.slds-carousel__indicators>.slds-carousel__indicator>.slds-carousel__indicator-action.slds-is-active {
+    background-color: #FA603C;
+    border: 1px solid #ffffff;
+}
+
+/***********Produc Card Style ***********/
+.productCardContainer {
+    min-height:21rem;
+    max-height: 21rem;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #E5E5EA;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 2%;
+    margin-top: 40px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.ProductLayout{
+    display: flex;
+    justify-content: space-between;
+}
+.ProductLayout_items{
+    width: 30%;
+}
+.productSingleImage{   
+    height: 100px;
+}
+.priceBox{
+    text-align: center;
+    padding:10px;
+}
+.verticalTextOverflow{
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;    
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.ProductNameBlock{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ProductImageBlock{
+    padding-left: 10%!important;
+    padding:10px;
+    border-right: 2px solid;
+}
+.addToCartButton > .slds-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FA603C;
+    color:#ffffff;
+    border-radius: 6px;
+    width: 100%;
+    padding: 5px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+.addToCartButton_Block{
+    width: 50%;
+    padding: 20px;
+}
+.disableStyle > .slds-button{
+    opacity: 0.5;    
+}
+.buyNowButton > .slds-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: blue;
+    color:#ffffff;
+    border-radius: 6px;
+    width: 100%;
+    padding: 5px;
+    font-family: "Poppins-Semibold";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+
+.countDot{
+    border-radius: 50%;
+    background: white;
+    border: none;
+    font-size: 10px!important;
+    color: black;
+    position: absolute;
+    top: 10px;
+    float: right;
+    text-align: right;
+    right: 8%;
+    font-family: "Poppins-Semibold";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.PlusMinusButton_Block{
+    width: 50%;    
+}
+.verticalLine{
+    height: 24px;
+    border-left: 1px solid black;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.addButtonEnable> .slds-button{
+    color: black;
+    background: transparent;
+    border: 1px solid black;
+    height: 24px;
+    padding: 10px
+}
+.addButtonDisable> .slds-button{
+    color: black;
+    background: transparent;
+    border: 1px solid black;
+    height: 24px;
+    padding: 10px
+}
+/***************************************    Responsive CSS   *********************************************/
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .iconsCSS>lightning-primitive-icon>svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .headerText {
+        font-size: 20px !important;
+        line-height: 25px !important;
+    }
+
+    .footer-block {
+        padding: 15px;
+    }
+
+    .Task_Body1_Semibold {
+        font-size: 14px;
+    }
+
+    .avtarStyle {
+        display: none;
+    }
+    .ProductLayout_items{
+        width: 100%;
+    }
+    .productCardContainer{
+        margin-top:15px;
+    }
+
+}
+
+@media(max-width: 319px) {
+    .iconsCSS>lightning-primitive-icon>svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .headerText {
+        font-size: 20px !important;
+        line-height: 25px !important;
+    }
+
+    .footer-block {
+        padding: 15px;
+    }
+
+    .Task_Body1_Semibold {
+        font-size: 14px;
+    }
+
+    .avtarStyle {
+        display: none;
+    }
+    .ProductLayout_items{
+        width: 100%;
+    }
+    .productCardContainer{
+        margin-top:15px;
+    }
+
+
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .iconsCSS>lightning-primitive-icon>svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    .headerText {
+        font-size: 20px !important;
+        line-height: 25px !important;
+    }
+
+    .avtarStyle {
+        display: none;
+    }
+    .ProductLayout_items{
+        width: 48%;
+    }
+    .productCardContainer{
+        margin-top:15px;
+    }
+
+}
+
+/* 
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .iconsCSS>lightning-primitive-icon>svg {
+        width: 50px;
+        height: 50px;
+    }
+    .ProductLayout_items{
+        width: 48%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**********************************/

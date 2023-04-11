@@ -1,0 +1,121 @@
+<template>
+    <div class="mainContainer">
+        <lightning-layout multiple-rows="true" class="">
+
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                class="topIconContainer">
+
+                <lightning-layout multiple-rows="true" class="">
+                    <lightning-layout-item size="4" medium-device-size="2" large-device-size="2">
+                        <ul class="bodyUlStyle">
+                            <li>
+                                <img src={topOffers} class="bodyHeaderImage" />
+                            </li>
+                            <li>
+                                Top Offers
+                            </li>
+                        </ul>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4" medium-device-size="2" large-device-size="2">
+                        <ul class="bodyUlStyle">
+                            <li>
+                                <img src={grocery} class="bodyHeaderImage" />
+                            </li>
+                            <li>
+                                Grocery
+                            </li>
+
+                        </ul>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4" medium-device-size="2" large-device-size="2">
+                        <ul class="bodyUlStyle">
+                            <li>
+                                <img src={mobile} class="bodyHeaderImage" />
+                            </li>
+                            <li>
+                                Mobile
+                            </li>
+
+                        </ul>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4" medium-device-size="2" large-device-size="2">
+                        <ul class="bodyUlStyle">
+                            <li>
+                                <img src={fashion} class="bodyHeaderImage" />
+                            </li>
+                            <li>
+                                Fashion
+                            </li>
+
+                        </ul>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="4" medium-device-size="2" large-device-size="2">
+                        <ul class="bodyUlStyle">
+                            <li>
+                                <img src={electronic} class="bodyHeaderImage" />
+                            </li>
+                            <li>
+                                Electronic
+                            </li>
+
+                        </ul>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="4" medium-device-size="2" large-device-size="2">
+                        <ul class="bodyUlStyle">
+                            <li>
+                                <img src={beautyToysAndMore} class="bodyHeaderImage" />
+                            </li>
+                            <li class="flexBox">
+                                <div>
+                                    Beauty ,Toys and More
+                                </div>
+                                <div>
+                                    <lightning-icon icon-name="utility:chevrondown" alternative-text="search!"
+                                        title="search" class="MoreDown slds-p-left_small">
+                                    </lightning-icon>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                class="slds-m-top_large">
+                <lightning-carousel scroll-duration="2" class="body_carousel"> <!-- disable-auto-scroll-->
+
+                    <lightning-carousel-image src={slide1} alternative-text="slide 1" href="javascript:void(0);"
+                        class="body_carouselImage">
+                    </lightning-carousel-image>
+                    <lightning-carousel-image src={slide2} alternative-text="slide 2" href="javascript:void(0);"
+                        class="body_carouselImage">
+                    </lightning-carousel-image>
+                    <lightning-carousel-image src={slide3} alternative-text="slide 3" href="javascript:void(0);"
+                        class="body_carouselImage">
+                    </lightning-carousel-image>
+                    <lightning-carousel-image src={slide4} alternative-text="slide 4" href="javascript:void(0);"
+                        class="body_carouselImage">
+                    </lightning-carousel-image>
+
+                </lightning-carousel>
+
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                class="slds-m-top_large">
+                <lightning-layout multiple-rows="true" class="ProductLayout">
+                    <template for:each={productList} for:item="pro">
+                        <lightning-layout-item key={pro.Id} class="ProductLayout_items" size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                            <c-product-Card_-One product={pro} single-product-image={pro.singleImg}>
+                            </c-product-Card_-One>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+
+</template>

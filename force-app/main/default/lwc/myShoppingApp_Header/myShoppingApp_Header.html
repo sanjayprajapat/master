@@ -1,0 +1,46 @@
+<template>
+    <div class="mainContainer">
+        <lightning-layout multiple-rows class="flexBox">
+            <lightning-layout-item size="12"
+                class="slds-col slds-max-small-size_1-of-12 slds-small-size_1-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                <lightning-icon icon-name="utility:threedots" alternative-text="threedots!" title="threedots"
+                    class="iconsCSS" onclick={openSideMenu}>
+                </lightning-icon>
+            </lightning-layout-item>
+            <lightning-layout-item size="12"
+                class="slds-col slds-max-small-size_8-of-12 slds-small-size_8-of-12 slds-medium-size_8-of-12 slds-large-size_8-of-12 mainHeader">
+                <span class="Task_H1_Regular headerText">My Shopping App</span>
+            </lightning-layout-item>
+            <lightning-layout-item size="12"
+                class="slds-col slds-max-small-size_3-of-12 slds-small-size_3-of-12 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                <div class="headerRightBlock">
+                    <lightning-icon icon-name="utility:search" alternative-text="search!" title="search"
+                        class="slds-m-right_small iconsCSS_right">
+                    </lightning-icon>
+                    <template if:false={isGuestUser}>
+                        <lightning-icon icon-name="utility:cart" alternative-text="cart!" title="cart"
+                            class="iconsCSS_right" onclick={openCart}>
+                        </lightning-icon>
+                        <template if:true={isItemsInCart}>
+                            <span class="countDot " data-aura-rendered-by="116:231;a">
+                                <span class="counterLabel slds-p-around_xx-small" data-aura-rendered-by="117:231;a">
+                                    {userResponse.countOfCartItems}
+                                </span>
+                            </span>
+                        </template>
+                        <lightning-avatar variant="circle" size="small" src="" initials={userResponse.userInitials}
+                            fallback-icon-name="standard:person_account" alternative-text="Amy Weaver"
+                            class="slds-m-left_small avtarStyle">
+                        </lightning-avatar>
+                    </template>
+                    <template if:true={isGuestUser}>
+                        <lightning-button variant="base" label="Log in" title="Log in" class="loginButton_Header"
+                            onclick={navigateToLogin}>
+                        </lightning-button>
+                    </template>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+
+</template>

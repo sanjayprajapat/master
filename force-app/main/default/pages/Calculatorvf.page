@@ -1,0 +1,26 @@
+<apex:page controller="Calculator" >
+    <style>
+        .buttonStyle { width:50px; background-color:green; text-align:center; padding-top:4px; font:50px; }
+    </style>
+    <apex:form >
+        <apex:pageBlock title="Calculator">
+            <apex:pageBlockSection columns="1" title="Simple Operation" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Enter First Value</apex:outputLabel>
+                    <apex:inputText value="{!a}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Enter Second Value</apex:outputLabel>
+                    <apex:inputText value="{!b}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="+" action="{!showdata}" styleClass="buttonStyle" style="background:silver"  />
+                    <apex:commandButton value="-" action="{!showdata1}" styleClass="buttonStyle" style="background:silver" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >You have performed {!opp} on value {!a} and {!b} and Result is {!result}.</apex:outputLabel></apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

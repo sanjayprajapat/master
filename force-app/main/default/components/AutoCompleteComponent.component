@@ -1,0 +1,91 @@
+<apex:component controller="AutoCompleteComController" allowDml="true" >
+    
+    <apex:attribute name="Objectname" type="String" description="Selected object" assignTo="{!selectedObjName}" />
+    <apex:attribute name="FieldName" type="String" description="Fields of Selected Object" assignTo="{!listOfFields}" /> 
+    
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>    
+  
+    <apex:actionFunction name="showInfoForAccount" action="{!showAccountDetail}" reRender="form">  
+        <apex:param assignTo="{!selectedAccountId}" name="selectedAccountId" value=""/>   
+    </apex:actionFunction>
+    
+    <apex:pageBlockSection collapsible="false" title="Search {!selectedObjName}" >       
+        <input  id="accountSearch" value="{!searchTerm}" />
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection columns="1" >         
+        <apex:pageBlockTable value="{!listOfFieldsName}" var="recordsName"  title="{!selectedObjName}"  rendered="{!accountDetailVisible}" width="100%"  border="1" cellpadding="2" cellspacing="1">             
+            <apex:inlineEditSupport showOnEdit="saveButton" event="ondblClick" /> 
+            <apex:column value="{!recordsName}"/>                
+            <apex:column value="{!selectedAccount[recordsName]}"/>                
+        </apex:pageBlockTable>
+ 		<apex:commandButton value="Save" action="{!saveAfterEdit}" styleclass="buttonclass" />
+    </apex:pageBlockSection>
+   
+   
+    <!--<apex:pageBlockSection title="{!selectedObjName} Record" rendered="{!accountDetailVisible}">        
+        <apex:repeat value="{!listOfFieldsName}" var="recordsName" >
+           <apex:inlineEditSupport showOnEdit="saveButton" event="ondblClick" />
+                <apex:outputfield  label="{!recordsName}" value="{!selectedAccount[recordsName]}" id="out">                   
+                </apex:outputfield>           
+        </apex:repeat>
+        <apex:commandButton value="Save" action="{!saveAfterEdit}" styleclass="buttonclass" />
+    </apex:pageBlockSection>--> 
+   
+       
+    <script type="text/javascript">
+    function showAccount(accountId){            
+        showInfoForAccount(accountId);
+    }
+    
+    $(function(){  
+        $("#accountSearch").autocomplete({  
+            minLength: 2,  
+            source: function(request, response){  
+                var searchString = request.term;
+                var objectnames="{!selectedObjName}";
+                var listoffieldstosearch="{!listOfFields}";
+                AutoCompleteComController.getSearchSuggestions(searchString,objectnames,listoffieldstosearch, function(result, event){                      
+                    if(event.status){  
+                        if(typeof result === 'undefined' || result.length <=0){  
+                            response(['No Record Found']);  
+                        }else {  
+                            response(result);  
+                        }  
+                    }else {  
+                        response([]);  
+                    }  
+                },  
+                                                               {escape: true}  
+                                                              );  
+            },  
+            select: function(event, ui){                    
+                if(ui.item.label != 'No Record Found'){  
+                    $("#accountSearch").val(ui.item.label);
+                    showAccount(ui.item.value); 
+                }  
+                return false;  
+            },  
+            focus: function( event, ui ) {  
+                $("#accountSearch").val(ui.item.label);  
+                return false;  
+            }
+        }); 
+        
+    });  
+    </script>
+    <style>
+        .buttonclass{
+        background-color: #EE1B1B !important;
+        border: 1px solid #393939 !important;
+        text-align:Center !important;
+        height: 30px;
+        line-height: 16px !important;
+        min-width: 70px;
+        vertical-align: middle;       
+        white-space: nowrap;
+        }
+    </style>
+</apex:component>

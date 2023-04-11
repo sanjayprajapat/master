@@ -1,0 +1,106 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"
+                controller="GoogleCloudIntegrationController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="showMessage" type="Boolean" default="false"/>
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="isTokenExpired" type="Boolean" default="false"/>
+    <aura:attribute name="buttonLabel" type="String"  default="Authorize"/>
+    <aura:attribute name="fileList" type="Object"/>
+    <aura:attribute name="selectedImageURL" type="String" default=""/>
+    <aura:attribute name="showError" type="Boolean" default="false"/>
+    <aura:attribute name="error" type="String"/>
+    <aura:attribute name="listOfActionType" type="list"/>
+    <aura:attribute name="actionType" type="String" default="TEXT_DETECTION"/>     
+    <!--component attributs -->
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    
+    
+    <div class="mainContainer">
+        <!--loading spinner start-->
+        <aura:if isTrue="{!v.spinner}">
+            <div aura:id="spinnerId" class="slds-spinner_container">
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading...</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:if>
+        <!-- Loading spinner end-->  
+        <lightning:layout multipleRows="true" class="contentBox">
+            <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                <center>
+                    <span class="Heading1">Google Cloud Vision</span>
+                </center>
+            </lightning:layoutItem>
+            <aura:If isTrue="{!v.showMessage}">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                    <center> 
+                        <div class="Heading1" style="color:green!important;">{!v.message}</div>                                        
+                    </center>
+                </lightning:layoutItem>
+            </aura:If>
+            
+            <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                <center>
+                    <!--disabled="{!!v.isTokenExpired}" -->
+                    <lightning:button label="{!v.buttonLabel}" title="{!v.buttonLabel}" onclick="{!c.getAuthCode}"                                      
+                                      
+                                      class="{!v.isTokenExpired  ? 'Button_Active' : 'Button_Inactive'}" >
+                    </lightning:button>
+                </center>
+            </lightning:layoutItem>
+            <!--<lightning:layoutItem flexibility="auto" padding="around-small" size="6">
+                <center>
+                    <lightning:button label="Re-Authorize" title="Re-Authorize" onclick="" 
+                                      disabled="{!!v.isTokenExpired}" 
+                                      class="{!v.isTokenExpired  ? 'Button_Active' : 'Button_Inactive'}">
+                    </lightning:button> 
+                </center>
+            </lightning:layoutItem>-->
+            <aura:If isTrue="{!v.showError}">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                    <center> 
+                        <div class="errorStyle">{!v.error}</div>                                        
+                    </center>
+                </lightning:layoutItem>
+            </aura:If>
+            
+            <div style="width:100%;height:100%;" class="flex_container">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="4" class="fileUploadBox">                
+                    <lightning:input name="file1" files="{!v.fileList}"  
+                                     aura:id="inputfile" type="file"  
+                                     label="" multiple="false" 
+                                     accept="image/png,image/gif, image/jpeg"  class="fileUploadCSS" 
+                                     onchange="{! c.handleFilesChange }" 
+                                     showHelpMessageIfInvalid = "Please select image"
+                                     variant="label-hidden"/>
+                    
+                </lightning:layoutItem>
+                <lightning:layoutItem  flexibility="auto" padding="around-small" size="4">              
+                    <lightning:combobox aura:id="accType" 
+                                        label="Account Type" 
+                                        name="AccountType" 
+                                        value="{!v.actionType}" 
+                                        options="{!v.listOfActionType}"  
+                                        iconName="utility:chevrondown"                                        
+                                        variant="label-hidden"/>
+                    
+                </lightning:layoutItem>
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="4">                               
+                    <lightning:button label="Upload" title="Upload" onclick="{!c.uploadImage}"
+                                      disabled="{!!v.selectedImageURL}" 
+                                      class="{!v.selectedImageURL  ? 'Button_Active' : 'Button_Inactive'}" >
+                    </lightning:button>               
+                </lightning:layoutItem>
+            </div>
+            <aura:If isTrue="{!v.selectedImageURL}">
+                <lightning:layoutItem size="12" class="imageClass"> 
+                    <center>
+                        <img src="{!v.selectedImageURL}" alt="person name" style="height:40%;width:40%;"/>
+                    </center>
+                </lightning:layoutItem>                 
+            </aura:If>
+        </lightning:layout>        
+    </div>
+</aura:component>

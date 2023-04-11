@@ -1,0 +1,60 @@
+.THIS .tempSclae{
+    background: url('https://www.w3schools.com/howto/img_nature_wide.jpg') 0 0 no-repeat;
+    width: 510px;
+    height: 186px;
+    margin: 20px 0;
+    position: relative;
+    background-size: 100% 100%;    
+    padding: 0 6px 0 9px;
+}
+
+.THIS .slidecontainer {
+    height: 100% ;/* height of the outside container */    
+}
+
+.THIS .slider {    
+    -webkit-appearance: none;
+    width: 496px !important;    
+    height: 186px;
+    border-radius: 5px;
+    background:none;
+    /*background: url('https://www.w3schools.com/howto/img_nature_wide.jpg');*/
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;    
+}
+.THIS .slider::-webkit-slider-thumb {  
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    background: url('https://www.w3schools.com/howto/contrasticon.png');
+    cursor: pointer;
+}
+
+.THIS .slider::-moz-range-thumb {    
+    width: 23px;
+    height: 25px;
+    border: 0;
+    background: url('https://www.w3schools.com/howto/contrasticon.png');   
+    cursor: pointer; 
+}
+
+.THIS .slider:hover {
+    opacity: 0.5; /* Fully shown on mouse-over */
+}
+
+/*.THIS .carSlide{
+    height: 50%;
+    width: 50%;
+    background: url(/resource/Slider/Slider/temp-bg.png);
+}*/
+
+.THIS .carimg{
+    height: 50%;
+    width: 50%;
+    max-width: 30%;
+    background-size: 105% !important
+}

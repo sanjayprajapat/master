@@ -1,0 +1,214 @@
+<apex:component controller="AllsobjectAndFieldsComponentController" allowDML="true" > 
+    <apex:attribute name="Objectname" type="String" description="Selected object" assignTo="{!selectedObjectName}" />
+    <apex:attribute name="Fields" type="String[]" description="Fields of Selected Object" assignTo="{!listOfFields}" />    
+    <apex:attribute name="unSortableFields" type="String[]" description="Selected object's Unsortable fields" assignTo="{!listofUnSortablefields}" />
+    <apex:attribute name="ListofLabels" type="String[]" description="Selected object's Fields Label" assignTo="{!listLabel}" />
+    
+    <!--------------------------------------New Record,Delete Selected,Download CSV and Alpha Sorting------------------------------------------>
+    <apex:pageBlock id="mainpbblock"  >
+        <apex:pageBlockSection columns="1" >
+            <apex:pageMessages id="Messageblock2" ></apex:pageMessages>                    
+        </apex:pageBlockSection>       
+        <apex:pageBlockSection columns="2" id="pgblocksec1"  >           
+            <apex:outputPanel >                
+                <apex:commandButton value="New Record" action="{!URLfor($action[selectedObjectName].new)}" status="ViewStateStatus" styleClass="combuttonclass"> </apex:commandButton>  
+                <apex:commandButton value="Delete Selected" action="{!deleteSelected}" reRender="mainpbblock" status="ViewStateStatus" styleClass="combuttonclass"> </apex:commandButton>
+                <apex:commandButton value="Download CSV" action="{!downloadCSV}" oncomplete="saveCsvFile('{!CsvString}')"   reRender="mainpbblock" status="ViewStateStatus" styleClass="combuttonclass"> </apex:commandButton>
+            </apex:outputPanel> 
+            <apex:outputPanel >
+                <apex:repeat value="{!alpha}" var="a" >
+                    <apex:commandLink value="{!a} | " action="{!sortRecords}" style="color:#015ba7;" status="ViewStateStatus" ><!--reRender="mainpbblock"-->
+                        <apex:param name="alphabates" value="{!a}"/> 
+                    </apex:commandLink>
+                </apex:repeat>     
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+        <!----------------------------------Records Table----------------------------------------------------------------------------------->
+        
+        <div style="overflow: scroll; width: 100%; max-height: 300px">
+            <!--for listLabel Indexing Iterate-->
+            <apex:variable var="i" value="{!0}"/>
+            <apex:pageBlockTable value="{!allFields}" var="records"  id="rtable" width="100%"  border="1" cellpadding="2" cellspacing="1"   > 
+                <!------------------MasterCheckBox------------------>                    
+                <apex:column width="100px"  >
+                    <apex:facet name="header" >
+                        <apex:inputCheckbox value="{!masterCBox}"  id="mastercb" onclick="selectMasterCheckbox(this,'childcb');" styleClass="MasterCheckBox"  />
+                    </apex:facet>
+                    <apex:inputCheckbox value="{!records.flag}" id="childcb"  onclick="return unselectMasterCheckbox();" styleclass="inputId"/>                         
+                </apex:column> 
+                <!------------------------------Edit and Delete Link-----------------------------------------------------------> 
+                <!--  <apex:outputLink value="/{!records.obj.Id}/e?" style="color:#015ba7;" >| Edit |</apex:outputLink>--->
+                <apex:column headerValue="Action" width="20%" colspan="1" rowspan="1">
+                    <apex:commandLink value="Edit |" action="{!editLink}" style="color:#015ba7;" status="ViewStateStatus">
+                        <apex:param name="EditId" value="{!records.obj.id}"  ></apex:param>
+                    </apex:commandLink>                        
+                    &nbsp;  
+                    <apex:commandLink value="Delete" action="{!deleteLink}" style="color:#015ba7;" status="ViewStateStatus" >
+                        <apex:param name="DeleteId" value="{!records.obj.id}"></apex:param>
+                    </apex:commandLink>
+                    <!--  <apex:outputLink value="{!URLfor($action[Objectname].delete ,records.obj.id)}" style="color:#015ba7;"> Delete</apex:outputLink>-->
+                </apex:column>
+                <!--------------------------------------------Columns of Records,sorting--------------------------------------------->
+                
+                <apex:repeat value="{!listOfFields}" var="fieldsName">                    
+                    <apex:column value="{!Records.obj[fieldsName]}">                        
+                        <apex:facet name="header">
+                            <!--------listLabel is a list of Fields Label which is send by Vf page to Component and
+							i is variable define out of pageblocktabel-->
+                            <apex:commandLink value="{!listLabel[i]}" action="{!sortColumn}"  status="ViewStateStatus"  > <!--reRender="mainpbblock"-->
+                                <apex:variable var="i" value="{!i+1}"/>
+                                <apex:param name="columnname" value="{!fieldsName}"></apex:param>
+                            </apex:commandLink>
+                        </apex:facet>                       
+                    </apex:column>                     
+                </apex:repeat>               
+            </apex:pageBlockTable>
+            <apex:outputPanel rendered="{!wrapperlist.size<=0}">
+                <div style="color:red;font-size:15px;text-align:center;border:2px;">No Records Available</div>
+            </apex:outputPanel>            
+        </div>
+        <!-------------------------------------------------------Pagination Buttons,PageNumber and Page Size Picklist---------------------------------> 
+        <!------------------------Input Checkbox of Page Number-------------------------------------->
+        <apex:pageBlockSection rendered="{!wrapperList.size>0}" columns="1"> 
+            <apex:panelGrid columns="3" width="100%">
+                <apex:outputPanel >
+                    Page:  <apex:inputText value="{!Page_number}"   >                            
+                    <apex:actionSupport event="onchange"   action="{!enterPageNo}" status="ViewStateStatus" />
+                    </apex:inputText>
+                    of {! CEILING(total_pages / page_Size) }
+                </apex:outputPanel>
+                <apex:outputPanel >
+                    <!----------------------------Pagination Buttons-------------------------------------------> 
+                    <apex:commandButton value="First" action="{!firstPage}" styleClass="pagebutton" disabled="{!!CheckPrevious}" status="ViewStateStatus"/>
+                    &nbsp;&nbsp;
+                    <apex:commandButton value="prev" action="{!prevPage}"  styleClass="pagebutton" disabled="{!!CheckPrevious}" status="ViewStateStatus"/>
+                    &nbsp;&nbsp; 
+                    <apex:commandButton value="Next" action="{!nextPage}"  styleClass="pagebutton" disabled="{!!CheckNext}" status="ViewStateStatus"/>
+                    &nbsp;&nbsp; 
+                    <apex:commandButton value="Last" action="{!lastPage}"   styleClass="pagebutton" disabled="{!!CheckNext}" status="ViewStateStatus"/>
+                    &nbsp;&nbsp;
+                </apex:outputPanel>
+                <apex:outputPanel >
+                    Records per page:
+                    <apex:selectList value="{! page_Size }" size="1" >
+                        <apex:selectOption itemValue="5" itemLabel="5"/>
+                        <apex:selectOption itemValue="10" itemLabel="10"/>
+                        <apex:selectOption itemValue="20" itemLabel="20"/>
+                        <apex:selectOption itemValue="50" itemLabel="50"/>
+                        <apex:selectOption itemValue="100" itemLabel="100"/>                                                                     
+                        <apex:actionSupport event="onchange" action="{!changePageSize}" reRender="mainpbblock" status="ViewStateStatus" />
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:panelGrid>
+        </apex:pageBlockSection> 
+        <apex:actionStatus id="ViewStateStatus">
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6;
+                                                                     height: 300%;opacity:0.65;width:100%;">
+                    <div class="waitingHolder" style="top: 100.2px; width: 91px;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." /> <span class="waitingDescription">Waiting</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionStatus> 
+    </apex:pageBlock>
+    <!----------------------------------------------------------Edit Record panel------------------------------------------------------------->
+    <apex:outputPanel rendered="{!listofObjectsTemp.size>0}"  >
+        <apex:pageBlock title="{!selectedObjectName} Details" id="BlockofEdit">
+            <div style="overflow: scroll; width: 100%; max-height: 300px">
+                <apex:pageBlockTable value="{!listofObjectsTemp}" var="data">
+                    <apex:repeat value="{!listOfFields}" var="fd">
+                        <apex:column headerValue="{!fd}">
+                            <apex:inputField value="{!data[fd]}" /></apex:column>
+                    </apex:repeat>
+                </apex:pageBlockTable>
+            </div>
+            <apex:pageBlockButtons location="Bottom">
+                <apex:commandButton action="{! saveAfterEditandDel}" value="Save" status="ViewStateStatus"  styleClass="combuttonclass" ></apex:commandButton>
+            </apex:pageBlockButtons> 
+        </apex:pageBlock>
+    </apex:outputPanel>
+    
+    <!--------------------------------------------------------JavaScript/css------------------------------------------------------------------------->    
+    <apex:pageBlock rendered="{!jsVarEnable}">
+   
+    <script type="text/javascript" >   
+   
+        window.onload(){
+            alert("Page Loaded");
+        }
+  	function saveCsvFile(csvdata){
+        if(csvdata.length === 0){
+            alert('Select at least One record');
+        }else{
+            var downloadcsv = document.createElement('a');
+            downloadcsv.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvdata);
+            downloadcsv.target = '_blank';
+            downloadcsv.download = '{!Objectname}.csv';
+            downloadcsv.click();
+            alert('Congratulation!!CSV Downloaded');
+        } 
+    }
+  function successFailure(msg) {
+        if(msg == '') {
+            window.top.location.reload() 
+            alert('Refreshed');
+        } 
+        else {
+            alert(msg);
+        }
+    } 
+   
+      function selectMasterCheckbox(obj,receivedInputID){
+            var inputCheckBox = document.getElementsByTagName("input");
+            console.log(inputCheckBox);                  
+            for(var i=0; i<inputCheckBox.length; i++){          
+                if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){                                     
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+   
+      function unselectMasterCheckbox(){
+            var inputcheckbox=document.getElementsByClassName('inputId');
+            var masterc = document.getElementsByClassName('MasterCheckBox');
+            var counter=0;
+            for(var i=0; i < inputcheckbox.length;i++){
+                if(inputcheckbox[i].id.indexOf("childcb")!=-1 && inputcheckbox[i].checked == true){
+                    counter++;
+                }
+            }
+            if(counter == inputcheckbox.length){
+                masterc[0].checked = true;  
+            }else{
+                masterc[0].checked = false;
+            }   
+        }    
+    </script>
+  </apex:pageBlock>
+    <style type="text/css">
+        .cols1 {width:150px; text-align:center;}
+        .cols2 {width:150px; text-align:center;}
+        .cols3 {width:200px; text-align:center;} 
+        .combuttonclass{
+        background-color: #EE1B1B !important;
+        border: 1px solid #393939 !important;
+        text-align:Center !important;
+        height: 30px;
+        line-height: 16px !important;
+        min-width: 70px;
+        vertical-align: middle;
+        white-space: nowrap;
+        }
+        .pagebutton{
+        text-align:Center;
+        height: 20px;
+        min-width: 50px;
+        border: 1px solid #393939 !important;
+        white-space: nowrap;
+        
+        }       
+        .comtextcss{font-size:15px;text-algn:center;font-weight:700;border:2px;}        
+    </style>
+    
+</apex:component>

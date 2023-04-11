@@ -1,0 +1,10 @@
+<apex:page controller="VFDemo" >
+<apex:outputLabel >Your Name is{!name}</apex:outputLabel>
+ <apex:form >
+   		<apex:outputLabel >Enter Your name</apex:outputLabel>
+     	<apex:inputText value="{!name}" />
+    	 <apex:commandButton value="click" reRender="one"/>
+     	<apex:outputLabel id="one">Your Name is{!name}</apex:outputLabel>
+</apex:form>
+    
+</apex:page>

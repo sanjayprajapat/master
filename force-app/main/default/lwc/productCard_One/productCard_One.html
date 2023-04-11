@@ -1,0 +1,54 @@
+<template>
+    <div style="width:100%;height:100%">
+        <div class="productCardContainer">
+            <lightning-layout multiple-rows="true">
+
+                <lightning-layout-item size="12" class="ProductNameBlock">
+                    <span class="Task_Body2_Semibold">{product.Name}</span>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="ProductImageBlock">
+                    <img src={singleProductImage} class="productSingleImage">
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="priceBox">
+                    <div class="Task_Body2_Semibold">Price : {product.Price__c}</div>
+                    <template if:true={product.Discount_Up_to__c}>
+                        <div class="Task_Body2_Semibold slds-p-top_small">Discount : {product.Discount_Up_to__c}</div>
+                    </template>
+                    <template if:true={isOutOfStock}>
+                        <div style="color:red;" class="slds-p-top_small Task_Body2_Semibold">Out of stock</div>
+                    </template>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" class="flexBox">
+                    <div class="addToCartButton_Block">
+                        <template if:true={isButtonDisable}>
+                            <lightning-button label={buttonLabel} title={buttonLabel} class="addToCartButton disableStyle" disabled>
+                            </lightning-button>
+                        </template>
+                        <template if:false={isButtonDisable}>
+                            <lightning-button label="Add to cart" title="Add to cart" class="addToCartButton"
+                                onclick={addToCartHandler}>
+                            </lightning-button>
+                        </template>
+                    </div>
+                    <div class="addToCartButton_Block">
+                        <lightning-button label="Buy Now" title="Buy Now" class="buyNowButton disableStyle" disabled>
+                        </lightning-button>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="">
+                    <div class="slds-p-top_medium Task_Body1_Regular verticalTextOverflow" data-id="comma_Seprate">
+                        <ul>
+                            <template for:each={product.descriptionList} for:item="des">
+                                <li key={des}>{des}</li>
+                            </template>
+                        </ul>
+                    </div>
+
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+    </div>
+
+</template>

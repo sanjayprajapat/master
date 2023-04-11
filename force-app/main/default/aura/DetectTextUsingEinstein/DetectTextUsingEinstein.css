@@ -1,0 +1,124 @@
+.THIS.mainContainer{
+    padding-left:25%;
+    padding-right:25%;
+    padding-top:5%;
+    padding-bottom:5%;
+}
+.THIS .contentBox{
+    width: 100%;
+    height: 100%;     
+    background: #FFFFFF;
+    border: 1px solid #E5E5EA;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding:25px;
+}
+
+.THIS .Heading1{
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0em;  
+    color:#000000;    
+}
+.THIS .Heading2{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;  
+    color:#000000;    
+}
+.THIS .Heading3{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;  
+    color:#000000;    
+}
+.THIS .errorStyle{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;  
+    color:red;    
+}
+.THIS .Button_Active{
+    text-align: center;
+    background-color: #166F9C !important;
+    border-radius: 4px;   
+    font-size: 14px;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color : #ffffff;
+    border: 3px solid rgba(22, 111, 156, 0.25) !important;
+    height:44px;
+}
+.THIS .Button_Active:hover{
+    background-color: #166F9C !important;
+    border-color: #166F9C !important;
+    border: 3px solid rgba(22, 111, 156, 0.25) !important; 
+}
+
+.THIS .Button_Inactive{
+    text-align: center;
+    background-color: #166F9C !important;
+    opacity: 0.5;
+    border-radius: 4px;    
+    font-size: 14px;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color : #ffffff!important;
+    height:44px;
+    border: 3px solid rgba(22, 111, 156, 0.25) !important;  
+    cursor: not-allowed!important;
+}
+.THIS Button_Inactive:hover{
+    background-color: #166F9C !important;
+    border-color: #166F9C !important;
+    opacity: 0.5 !important;
+}
+.THIS .flex_container{
+    display:flex;
+    /*justify-content:center;*/
+    align-items:center;
+}
+.THIS .fileUploadCSS >.slds-form-element__control > .slds-file-selector > .slds-file-selector__dropzone> slot> label {
+    height:44px;
+}
+.THIS .fileUploadCSS >.slds-form-element__control>.slds-file-selector>.slds-file-selector__dropzone> slot > label > .slds-file-selector__button {
+    height:44px;
+}
+.THIS .url_Input > .slds-form-element__control> input{
+    height: 48px;
+    width: 100%;    
+    border: 1px solid #C7C7CC !important;
+    box-sizing: border-box!important;
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25)!important;
+    border-radius: 4px!important;    
+}
+.THIS .th_Background{
+    background: darkcyan;
+}
+.THIS .custom_table{
+    border:1px solid black;
+}
+.THIS .tableDetection_CheckBox > .slds-form-element__control > .slds-checkbox > .slds-checkbox__label > .slds-form-element__label{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;  
+    color:#000000; 
+}
+.THIS .tableDetection_CheckBox > .slds-form-element__control > .slds-checkbox > .slds-checkbox__label > .slds-checkbox_faux{
+    height:25px;
+    width:25px;
+    color:#000000; 
+}

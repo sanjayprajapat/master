@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"
+                controller="CustomStaticResourceHandler_Controller">
+	<aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <ltng:require scripts="{!$Resource.JsZip}" afterScriptsLoaded="{!c.onPress}"/>
+</aura:component>

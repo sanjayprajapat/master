@@ -1,0 +1,150 @@
+<template>
+    <div style="width:100%;height:100%;">
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium" class="spinnerClass"></lightning-spinner>
+        </template>
+        <!-- <lightning-layout multiple-rows class="fullHeight">
+            <lightning-layout-item size="12" large-device-size="5" class="fullHeight imagebLock">
+            -->
+        <!--<img src={sideImage} class="fullHeight">-->
+        <!--     <div class="TitleHeading">My Shopping App</div>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="7"
+                class="secondDiv">
+
+                <div class="signInText Task_H2_Regular">Sign In</div>
+                <div class="loginDetailCard">
+                    <lightning-layout multiple-rows>
+                        <template if:true={showError}>
+                            <lightning-layout-item size="12">
+                                <div class="Task_Subtitle2_Semibold errorMSG">{errorMessage}</div>
+                            </lightning-layout-item>
+                        </template>
+
+                        <lightning-layout-item size="12">
+                            <div onkeyup={onKeyUp}>
+                                <lightning-input data-id="username" name="uName" value={communityUsername}
+                                    label="Email Address" class="inputBoxCss" required="true" onchange={checkValidation}
+                                    onblur={checkValidation}></lightning-input>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12">
+                            <div onkeyup={onKeyUp}>
+                                <lightning-input data-id="password" name="pass" type="password"
+                                    value={communityPassword} label="Password" class="inputBoxCss" required="true"
+                                    onchange={checkValidation} onblur={checkValidation}></lightning-input>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" class="signInButtonBlock">
+                            <lightning-button name="signIn" label="Sign In" title="Sign In" class="signInButton"
+                                onclick={loginToCommunity}></lightning-button>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" class="checkboxcss">
+                            <lightning-input data-id="inputcheck" type="checkbox" class="childCheck" label="Remember me"
+                                name="remember"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" class="fogotPassowrdBlock">
+                            <lightning-button variant="base" label="Forgot Password?" title="Forgot Password"
+                                class="forgotpasscss">
+                            </lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+
+                <div class="BottomSection">
+                    <div class="divsalesforce">
+                        <Span>Or, sign in with Salesforce:</Span>
+                    </div>
+                    <div class="signInWithSalesforceBlock">
+                        <lightning-button icon-name="utility:salesforce1" label="Sign In With Salesforce"
+                            title="Sign In With Salesforce" class="signInWithSalesforce" onclick={navigateToSalesforce}>
+                        </lightning-button>
+                    </div>
+                    <div class="registerCss">
+                        <span>Don’t have an account? </span>
+                        <lightning-button variant="base" label="Register" title="Register" class="forgotpasscss"
+                            onclick={navigateToRegister}>
+                        </lightning-button>
+                    </div>
+
+                </div>
+            </lightning-layout-item>
+        </lightning-layout> -->
+
+
+
+        <!--********************************************new Ui In Dark ***********************-->
+        <lightning-layout multiple-rows class="FirstLayout">
+            <lightning-layout-item flexibility="auto" size="12" large-device-size="4" class="firstBlock" >
+
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto" size="12" large-device-size="8" medium-device-size="12" class="secondBlock">
+                <lightning-layout multiple-rows class="">
+                    <lightning-layout-item size="12">
+                        <lightning-button name="signUp" label="Sign Up" title="Sign Up" class="signUp_Button"
+                            onclick={navigateToRegister}></lightning-button>
+                        <lightning-button name="signIn" label="Sign In" title="Sign In" class="signIn_Button"
+                            onclick={loginToCommunity}></lightning-button>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" class="slds-p-top_x-large">
+                        <lightning-layout multiple-rows class="DarkloginCard">
+                            <template if:true={showError}>
+                                <lightning-layout-item size="12">
+                                    <div class="Task_Subtitle2_Semibold errorMSG">{errorMessage}</div>
+                                </lightning-layout-item>
+                            </template>
+
+                            <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                <div onkeyup={onKeyUp}>
+                                    <lightning-input data-id="username" name="uName" value={communityUsername}
+                                        label="Email Address" class="Dark_InputBox" required="true"
+                                        onchange={checkValidation} onblur={checkValidation} variant="label-hidden"
+                                        placeholder="Please enter your email"></lightning-input>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                <div onkeyup={onKeyUp}>
+                                    <lightning-input data-id="password" name="pass" type="password"
+                                        value={communityPassword} label="Password" class="Dark_InputBox" required="true"
+                                        onchange={checkValidation} onblur={checkValidation} variant="label-hidden"
+                                        placeholder="Please enter your password"></lightning-input>
+                                </div>
+                            </lightning-layout-item>
+
+                            <lightning-layout-item size="12" class="Dark_CheckBoxBlock slds-p-vertical_medium">
+                                <lightning-input data-id="inputcheck" type="checkbox" class="Dark_CheckBox"
+                                    label="Remember me" name="remember"></lightning-input>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" class="slds-p-vertical_medium">
+                                <lightning-button variant="base" label="Forgot Password?" title="Forgot Password"
+                                    class="Dark_forgotPassword"
+                                    onclick={navigateToForgot}>
+                                </lightning-button>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" class="slds-p-vertical_medium">
+
+                        <div class="Dark_SignInWithSalesforceBlock">
+                            <hr class="HRClass">
+                            <span style="width: 100%;" class="slds-p-horizontal_small">Or, sign in with
+                                Salesforce:</span>
+                            <hr class="HRClass">
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12">
+                        <div class="Dark_SignInWithSalesforceBlock">
+                            <lightning-button icon-name="utility:salesforce1" label="Sign In With Salesforce"
+                                title="Sign In With Salesforce" class="Dark_SignInWithSalesforce"
+                                onclick={navigateToSalesforce}>
+                            </lightning-button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

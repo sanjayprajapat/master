@@ -1,0 +1,49 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"
+                controller="CustomKanbanViewController">
+    <aura:handler name="init" value="{!this}" action="{!c.initHandler}"  />
+    <aura:attribute name="sObjectName" type="String" default="Story__c" />
+    <aura:attribute name="listOfField" type="List" default="Id,Name,Status__c,priority__c,Level_of_efforts__c"/>
+    <aura:attribute name="kanbanField" type="String" default="Status__c"/>
+    <aura:attribute name="limitOfRecord" type="Integer" default="100"/>
+    <aura:attribute name="parentId" type="String" default="" />
+    <aura:attribute name="startId" type="string"/>
+    <aura:attribute name="containerId" type="string"/>
+    <aura:attribute name="listOfStatus" type="Object[]"/>
+    <aura:attribute name="listOfRecords" type="Object[]"/>
+    <aura:attribute name="story" type="object"/>
+    
+    
+    <div class="canban-container" style="">
+        <div class="kanbanContainer">
+            <aura:iteration items="{!v.listOfStatus}" var="status" >
+                <div class="kanbanStoryBlock droparea" id="{!status.valueWithoutSpace+'@id'}"  ondrop="{!c.drop}" ondragover="{!c.allowDrop}">
+                    <lightning:layoutItem class="designclassLeft">
+                        
+                        <div class="headclass slds-grid">
+                            <div class="slds-col slds-size_5-of-6 ">
+                                <span title="{!status.label}" class="Task_Subtitle2_Semibold CenterText1">{!status.label}</span>&nbsp;&nbsp;
+                                <span title="1" class="Task_Subtitle1_Regular CenterText2">{!status.totalCount}</span>
+                            </div>
+                        </div>                            
+                        <div class="tileContainer" id="{!status.valueWithoutSpace+'$id'}" onscroll="{!c.onScrollOuterDiv}">                                
+                            <aura:iteration items="{!v.listOfRecords}" var="story" >
+                                <aura:if isTrue="{!story.Status__c == status.label}">
+                                    <div id="{!status.valueWithoutSpace+'#'+story.Id}" data-drag-id="{!status.valueWithoutSpace+'#'+story.Id}" class="slds-card" draggable="true" ondragstart="{!c.drag}" >
+                                        <div parentId="{!status.valueWithoutSpace+'#'+story.Id}" class="temp_tile">
+                                            SN : {!story.Name}
+                                            <br/>
+                                            LOE : {!story.Level_of_efforts__c} 
+                                            <br/>
+                                            Status : {!story.Status__c}
+                                        </div>
+                                    </div>
+                                </aura:if>
+                                
+                            </aura:iteration>                           
+                        </div>
+                    </lightning:layoutItem>
+                </div>    
+            </aura:iteration>
+        </div>        
+    </div>
+</aura:component>

@@ -1,0 +1,19 @@
+<aura:component implements="forceCommunity:layout" description="Custom Content Layout" 
+access="global">
+    <aura:attribute name="column1" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:html tag="style">
+        [data-region-name|=column1] {       
+        	height:100%;
+        }
+        .ui-widget{        
+        	height:100%;
+        }
+    </aura:html>   
+    <div class="container" style="height: -webkit-fill-available !important;">
+        <div class="contentPanel" style="height: -webkit-fill-available !important;"> 
+            <div style="height: -webkit-fill-available !important;">
+                {!v.column1}
+            </div>
+        </div>
+    </div>
+</aura:component>

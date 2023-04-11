@@ -1,0 +1,141 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" 
+                controller="DetectTextUsingEinstein_Controller">
+    <aura:handler name="init" value="{!this}" action="{!c.initHandler}" /> 
+    <aura:attribute name="showMessage" type="Boolean" default="false"/>
+    <aura:attribute name="message" type="String"/>   
+    <aura:attribute name="fileList" type="Object"/>
+    <aura:attribute name="selectedImageURL" type="String" default=""/>
+    <aura:attribute name="showError" type="Boolean" default="false"/>
+    <aura:attribute name="error" type="String"/>  
+    <aura:attribute name="spinner" type="boolean" default="FALSE"/>
+    <aura:attribute name="listOfResult" type="List"/>
+    <aura:attribute name="listOfActionType" type="list"/>
+    <aura:attribute name="actionType" type="String" default="SELECT_IMAGE"/> 
+    <aura:attribute name="pasteUrl" type="String"/>
+    <aura:attribute name="isTableDetection" type="boolean" default="false"/> 
+    
+    <div class="mainContainer">
+        <!--loading spinner start-->
+        <aura:if isTrue="{!v.spinner}">
+            <div aura:id="spinnerId" class="slds-spinner_container">
+                <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading...</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:if>
+        <!-- Loading spinner end-->  
+        <lightning:layout multipleRows="true" class="contentBox">
+            <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                <center>
+                    <span class="Heading1">Salesforce Einstein Vision</span>
+                </center>
+            </lightning:layoutItem>
+            <aura:If isTrue="{!v.showMessage}">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                    <center> 
+                        <div class="Heading1" style="color:green!important;">{!v.message}</div>                                        
+                    </center>
+                </lightning:layoutItem>
+            </aura:If>            
+            
+            <aura:If isTrue="{!v.showError}">
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                    <center> 
+                        <div class="errorStyle">{!v.error}</div>                                        
+                    </center>
+                </lightning:layoutItem>
+            </aura:If>
+            
+            <lightning:layoutItem  flexibility="auto" padding="around-small" size="6">              
+                <lightning:combobox aura:id="ActionType" 
+                                    label="Action" 
+                                    name="Action" 
+                                    value="{!v.actionType}" 
+                                    options="{!v.listOfActionType}"  
+                                    iconName="utility:chevrondown"                                        
+                                    variant="label-hidden"
+                                    onchange="{!c.handleImageContent}"/>
+                
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem  flexibility="auto" padding="around-small" size="6"> 
+                <lightning:input type="checkbox" label="is Contains Table ?" checked ="{!v.isTableDetection}" class="tableDetection_CheckBox"> </lightning:input>
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem  flexibility="auto" padding="around-small" size="6">
+                <!-- empty block -->
+            </lightning:layoutItem>
+            
+            <div style="width:100%;height:100%;" class="flex_container">
+                
+                <aura:If isTrue="{!v.actionType == 'PASTE_URL'}">
+                    
+                    <lightning:layoutItem flexibility="auto" padding="around-small" size="6">
+                        <lightning:input aura:id="url" name="url" value="{!v.pasteUrl}" 
+                                         label="url" class="url_Input" onchange="{!c.handleInputBox}"
+                                         variant="label-hidden"
+                                         placeholder="Paste your url of image.."/>
+                    </lightning:layoutItem>
+                    
+                    <aura:set attribute='else'>
+                        <lightning:layoutItem flexibility="auto" padding="around-small" size="6" class="fileUploadBox">                
+                            <lightning:input name="file1" files="{!v.fileList}"  
+                                             aura:id="inputfile" type="file"  
+                                             label="" multiple="false" 
+                                             accept="image/png,image/gif, image/jpeg"  class="fileUploadCSS" 
+                                             onchange="{! c.handleFilesChange }" 
+                                             showHelpMessageIfInvalid = "Please select image"
+                                             variant="label-hidden"/>
+                            
+                        </lightning:layoutItem>
+                    </aura:set>
+                    
+                </aura:If>                
+                
+                <lightning:layoutItem flexibility="auto" padding="around-small" size="2">                               
+                    <lightning:button label="Upload" title="Upload" onclick="{!c.uploadImage}"
+                                      disabled="{!!v.selectedImageURL}" 
+                                      class="{!v.selectedImageURL  ? 'Button_Active' : 'Button_Inactive'}" >
+                    </lightning:button>               
+                </lightning:layoutItem>
+                
+                <aura:If isTrue="{!v.selectedImageURL}">
+                    <lightning:layoutItem size="4" flexibility="auto" padding="around-small" class="imageClass"> 
+                        <center>
+                            <img src="{!v.selectedImageURL}" alt="person name" />
+                        </center>
+                    </lightning:layoutItem>                 
+                </aura:If>
+            </div>            
+            
+            <lightning:layoutItem size="12" flexibility="auto" padding="around-small">
+                <table class="slds-table slds-max-medium-table_stacked-horizontal custom_table">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th data-name="Name" class="slds-is-sortable Heading2 th_Background" scope="col"  id="label" >
+                                <span class="slds-truncate" title="label">Label</span>                                                              
+                            </th>
+                            <th  data-name="RecordType" class="slds-is-sortable Heading2 th_Background" scope="col" id="probability">
+                                <span class="slds-truncate" title="probability">Probability </span>
+                            </th>                                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.listOfResult}" var="result" indexVar="index"> 
+                            <tr class="slds-hint-parent Heading3">                            
+                                <td data-label="Name" title="{!result.label}" class="slds-truncate">
+                                    {!result.label}
+                                </td>
+                                <td data-label="Type" title="{!result.probability}" class="slds-truncate">
+                                    {!result.probability}
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </lightning:layoutItem>            
+        </lightning:layout>        
+    </div>
+</aura:component>

@@ -1,0 +1,30 @@
+<apex:page controller="arrofstring" >
+    <style>
+        .bPageBlock .detailList tr td.dataCol, 
+        .bPageBlock .detailList tr td.labelCol
+        {
+        border-bottom:5px solid red;
+        }
+    </style>
+    <apex:form >
+        <apex:pageBlock title="page block">
+            <apex:pageBlockSection columns="1" collapsible="true" title="page Block Section 1" >
+                <apex:pageBlockSectionItem >
+                    <apex:pageBlockTable value="{!values}" var="a" >
+                        <apex:column headerValue="Name" value="{!a}"/>
+                        <apex:column value="{!name}"/>
+                    </apex:pageBlockTable> 
+                </apex:pageBlockSectionItem>      
+            </apex:pageBlockSection> 
+            
+            <apex:pageBlockSection columns="2" title="page Block Section 2">
+                <apex:pageBlockSectionItem >
+                    <apex:pageBlockTable value="{!values}" var="a" >
+                        <apex:column headerValue="Name" value="{!a}"/>
+                        <apex:column value="{!name}"/>
+                    </apex:pageBlockTable> 
+                </apex:pageBlockSectionItem>      
+            </apex:pageBlockSection>   
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

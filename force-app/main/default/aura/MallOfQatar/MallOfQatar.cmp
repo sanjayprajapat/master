@@ -1,0 +1,29 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <div class="mainContainer">
+        <div class = "header">    
+            <img src="/resource/1641903844000/MallOfQatar"/>
+        </div>
+        <div class="body">
+            <span class="heading_one">Resetting your password</span>
+            
+            <div class="inner_div">
+                
+                <span class="heading_two">Hii "Name"</span>
+                <br/>    
+                <br/>    
+                <span class="heading_three">You recently requested to reset your Mall of Qatar Account password</span>
+                
+                <div class="buttonBlock">
+                    <button type="button" class="reset_button">Reset Password</button>
+                </div>    
+                <div class="body_footer">
+                    <span class="footer_text">To receive more info on this issue, please contact our support team at Support@moq.com</span>
+                </div>
+            </div>
+            
+        </div>
+        <div class = "footer">   
+        </div>
+    </div>
+</aura:component>

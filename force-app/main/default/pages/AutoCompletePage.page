@@ -1,0 +1,8 @@
+<apex:page controller="AutoCompleteController">  
+    <apex:form >       
+        <apex:pageBlock id="form" mode="Edit">
+             <apex:inlineEditSupport showOnEdit="saveButton" event="ondblClick" /> 
+            <c:AutoCompleteComponent id="com1"  objectname="Account" FieldName="name" />
+        </apex:pageBlock>           
+    </apex:form>   
+</apex:page>

@@ -1,0 +1,117 @@
+<template>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium"
+        aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+        <div class="slds-modal__container MyShoppingAppModal_Container">
+            <header class="slds-modal__header MyShoppingAppModal_Header">
+                <lightning-button-icon icon-name="utility:close" class=" MyShoppingAppModal_Close" onclick={closeModal}
+                    alternative-text="close"></lightning-button-icon>
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate MyShoppingAppModal_Header_Heading">
+                    Your Cart</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium MyShoppingAppModal_Content" id="modal-content-id-1">
+                <lightning-layout multiple-rows class="">
+                    <template for:each={cartItemsList} for:item="item">
+                        <lightning-layout-item size="12" class="slds-m-top_large" key={item.Id}>
+
+                            <lightning-layout multiple-rows class="">
+                                <lightning-layout-item size="4" class="flexBox">
+                                    <img src={item.singleImg} class="productSingleImage">
+                                </lightning-layout-item>
+                                <lightning-layout-item size="8" class="cartDetail_Block">
+                                    <lightning-layout multiple-rows class="">
+                                        <lightning-layout-item size="12">
+                                            <span class="Task_Body2_Semibold textColor">{item.Product__r.Name}</span>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="12"
+                                            class="slds-col slds-max-small-size_12-of-12 slds-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                                            <div class="Task_Body2_Semibold textColor">Price :
+                                                {item.Product__r.Price__c}</div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="12"
+                                            class="slds-col slds-max-small-size_12-of-12 slds-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                                            <template if:true={item.Product__r.Discount_Up_to__c}>
+                                                <div class="Task_Body2_Semibold textColor">Discount :
+                                                    {item.Product__r.Discount_Up_to__c}</div>
+                                            </template>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="12"
+                                            class="slds-col slds-max-small-size_12-of-12 slds-small-size_12-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                                            <span class="Task_Body2_Semibold textColor">Total : {item.total}</span>
+                                        </lightning-layout-item>
+                                        <template if:false={item.Product__r.Quantity__c}>
+                                            <lightning-layout-item size="12">
+                                                <span class="Task_Body2_Semibold" style="color:red;">Out of stock</span>
+                                            </lightning-layout-item>
+                                        </template>
+
+                                    </lightning-layout>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12"
+                            class="slds-m-top_large flexBox cartAddRemoveButtonBlock slds-col slds-max-small-size_6-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_4-of-12"
+                            key={item.Id}>
+
+                            <template if:true={item.Product__r.Quantity__c}>
+                                <lightning-button data-id={item.Id} label="+" title="Add" name={item} onclick={addItems}
+                                    class="MyShoppingAppModal_CloseButton">
+                                </lightning-button>
+                            </template>
+                            <template if:false={item.Product__r.Quantity__c}>
+                                <lightning-button label="+" title="Add"
+                                    class="MyShoppingAppModal_CloseButton disableButton" disabled>
+                                </lightning-button>
+                            </template>
+
+                            <lightning-button label={item.Quantity__c} title={item.Quantity__c}
+                                class="slds-m-horizontal_small MyShoppingAppModal_CloseButton" disabled>
+                            </lightning-button>
+
+
+                            <template if:false={item.Product__r.Quantity__c}>
+                                <lightning-button label="-" title="Remove" disabled
+                                    class="disableButton MyShoppingAppModal_CloseButton">
+                                </lightning-button>
+                            </template>
+
+                            <template if:false={item.Quantity__c}>
+                                <lightning-button label="-" title="Remove" disabled
+                                    class="disableButton MyShoppingAppModal_CloseButton">
+                                </lightning-button>
+                            </template>
+
+                            <template if:true={item.Product__r.Quantity__c}>
+                                <template if:true={item.Quantity__c}>
+                                    <lightning-button label="-" title="Remove" name={item} onclick={removeItems}
+                                        class="MyShoppingAppModal_CloseButton">
+                                    </lightning-button>
+                                </template>
+                            </template>
+
+
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="12"
+                            class="slds-m-top_large flexBox removeItemBlock slds-col slds-max-small-size_6-of-12 slds-small-size_6-of-12 slds-medium-size_8-of-12 slds-large-size_8-of-12"
+                            key={item.Id}>
+                            <lightning-button label="Remove item" title="Remove item" name={item}
+                                onclick={removeItemFromCart} class="MyShoppingAppModal_CloseButton">
+                            </lightning-button>
+                        </lightning-layout-item>
+
+                        <div class="horizontalLine slds-m-top_small slds-m-bottom_small" key={item.Id}></div>
+                    </template>
+                </lightning-layout>
+
+            </div>
+            <footer class="slds-modal__footer MyShoppingAppModal_Footer">
+                <span class="Task_Body2_Semibold textColor">Pay : {totalToPay}</span>
+
+                <lightning-button label="Procced to pay" title="Procced to pay" onclick={proceedToPayHandler}
+                    class="slds-m-left_x-small MyShoppingAppModal_CloseButton"></lightning-button>
+
+            </footer>
+        </div>
+
+    </section>
+</template>

@@ -1,0 +1,82 @@
+<template>
+    <div class="mainContainer_SideMenu">  
+        <div class="Myheader">            
+            <img src={fullPhoto} class="imageInHeader">
+            <div class="closeSection">
+                <lightning-icon icon-name="utility:close" alternative-text="close!" title="close" 
+                onclick={closeSideMenu}></lightning-icon>
+            </div>
+            <div class="roundBlock">
+                <div class="circle1">
+                    <img src={smallPhoto}>
+                </div>
+            </div> 
+            <div class="userNameCSS">
+               <span class="Task_H4_Regular">{userName}</span> 
+            </div>         
+        </div>
+       <div class="myBody">
+        <!--<img src={headerSideImage}> -->
+        <div class="bodyContent">
+
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" class="">
+                    <ul class="slds-list_horizontal ulClass">                       
+                        <li class="iconLiCSS">
+                            <lightning-icon icon-name="utility:home" alternative-text="Home!" title="Home"></lightning-icon>
+                        </li>
+                        <li class="slds-p-left_small Task_H4_Regular TextLiCSS">Home</li>
+                    </ul>
+                </lightning-layout-item>
+                <div class="bottomBorder"></div>
+                <lightning-layout-item size="12" class="">
+                    <ul class="slds-list_horizontal ulClass">                        
+                        <li class="iconLiCSS">
+                            <lightning-icon icon-name="utility:fulfillment_order" alternative-text="fulfillment_order!" title="fulfillment_order"></lightning-icon>
+                        </li>
+                        <li class="slds-p-left_small Task_H4_Regular TextLiCSS">My Order</li>
+                    </ul>
+                </lightning-layout-item>
+                <div class="bottomBorder"></div>
+                <lightning-layout-item size="12" class="">
+                    <ul class="slds-list_horizontal ulClass">                        
+                        <li class="iconLiCSS">
+                            <lightning-icon icon-name="utility:payment_gateway" alternative-text="Payment Setting!" title="Payment Setting"></lightning-icon>
+                        </li>
+                        <li class="slds-p-left_small Task_H4_Regular TextLiCSS">Payment Setting</li>
+                    </ul>
+                </lightning-layout-item>
+                <div class="bottomBorder"></div>
+                <lightning-layout-item size="12" class="">
+                    <ul class="slds-list_horizontal ulClass">                        
+                        <li class="iconLiCSS">
+                            <lightning-icon icon-name="utility:checkin" alternative-text="Address Setting!" title="Address Setting"></lightning-icon>
+                        </li>
+                        <li class="slds-p-left_small Task_H4_Regular TextLiCSS">My Address</li>
+                    </ul>
+                </lightning-layout-item>
+                <div class="bottomBorder"></div>
+                <lightning-layout-item size="12" class="">
+                    <ul class="slds-list_horizontal ulClass">                        
+                        <li class="iconLiCSS">
+                            <lightning-icon icon-name="utility:user" alternative-text="My Account!" title="My Account"></lightning-icon>
+                        </li>
+                        <li class="slds-p-left_small Task_H4_Regular TextLiCSS">My Account</li>
+                    </ul>
+                </lightning-layout-item>
+                <div class="bottomBorder"></div>
+                <lightning-layout-item size="12" class="">
+                    <ul class="slds-list_horizontal ulClass">                        
+                        <li class="iconLiCSS">
+                            <lightning-icon icon-name="utility:logout" alternative-text="Sign out!" title="Sign out"></lightning-icon>
+                        </li>
+                        <li class="slds-p-left_small Task_H4_Regular TextLiCSS">Sign out</li>
+                    </ul>
+                </lightning-layout-item>
+                <div class="bottomBorder"></div>
+                </lightning-layout>
+            </div>
+        
+        </div> 
+    </div>
+</template>

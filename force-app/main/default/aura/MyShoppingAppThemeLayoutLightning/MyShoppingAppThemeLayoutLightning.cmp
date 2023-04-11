@@ -1,0 +1,36 @@
+<aura:component implements="forceCommunity:themeLayout" access="global">
+    <aura:attribute name="header" type="Aura.Component[]" required="false" />
+    <aura:attribute name="footer" type="Aura.Component[]" required="false" />
+    <aura:attribute name="body" type="Aura.Component[]" required="false" />
+    <aura:attribute type="String" name="componentName" />
+    <aura:attribute type="boolean" name="isOpen" />
+
+    <lightning:messageChannel type="MyShoppingAppMessageChannel__c" aura:id="lmsDemohannel"
+        onMessage="{!c.handleReceiveMessage}" />
+
+    <div class="mainContainer-ThemeLayout">
+
+        <div class="ShoppingApp_header">
+            {!v.header}
+        </div>
+
+        <div id="mainContent" class="ShoppingApp_body">
+            {!v.body}
+        </div>
+
+        <div class="ShoppingApp_footer">
+            {!v.footer}
+        </div>
+
+        <aura:if isTrue="{!and(v.isOpen == true , v.componentName =='miniSideBar')}">
+            <div class="sideMenuStyle">
+                <c:myShoppingAppSideMenu />
+            </div>
+        </aura:if>
+        <aura:if isTrue="{!and(v.isOpen == true , v.componentName =='myShoppingApp_Cart')}">
+            <div class="sideMenuStyle">
+                <c:myShoppingApp_Cart/>
+            </div>
+        </aura:if>
+    </div>
+</aura:component>

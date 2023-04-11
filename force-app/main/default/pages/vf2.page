@@ -1,0 +1,6 @@
+<apex:page controller="Vfdemo2">
+ <apex:outputlabel >Press Button</apex:outputlabel>
+    <apex:form >
+    <apex:commandButton value="click here" action="{!show}"/>  
+    </apex:form>
+</apex:page>

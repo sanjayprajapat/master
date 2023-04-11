@@ -1,0 +1,162 @@
+html ,body {
+    height: 100%;
+}
+.mainContainer_SideMenu{
+    height: 100%; 
+    width:30%;
+}
+.Myheader{
+    position:relative;
+    width: 100%;    
+    min-height: 30%;
+    max-height: 30%;
+    background-color: #101010;
+}
+.imageInHeader{   
+  position: absolute;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);  
+  height: 100%;
+  width:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.closeSection{
+    position: absolute;
+    z-index: 997;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    top: 4px;
+    right: 8px;
+}
+.closeSection > lightning-icon >lightning-primitive-icon >svg{
+    width:20px;
+    height: 20px;
+    fill:#101010;
+}
+.roundBlock{   
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.circle1{    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+}
+.circle1 > img{
+    border-radius: 100%;
+    border: 2px solid white;
+    height: 85px;
+    width: 85px;    
+}
+.userNameCSS{
+    position: absolute;
+    z-index: 996;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+}
+.myBody{   
+    width: 100%;
+    height: 70%;
+    padding-top: 10%; 
+    background-color: #101010;
+   /* background-color: rgb(0,0,0); /* Fallback color */
+   /* background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */  
+}
+/*.myBody > img{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    height: 100%;
+    width: 100%;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);     
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+.bodyContent{
+    /*position: absolute;    
+    top: 5%;*/
+    width: 100%;
+}
+.ulClass{
+    padding:10px;
+}
+.iconLiCSS{
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+}
+.TextLiCSS{
+    width: 80%;
+    align-items: center;
+    display: grid;
+}
+.bottomBorder{
+    width:100%;
+    border:1px solid;
+    opacity: 0.5;
+}
+.Task_H4_Regular{
+    color:#ffffff;
+}
+
+/**** Responsive css ***/
+@media screen and (min-width:320px) and (max-width:480px) {
+    .mainContainer_SideMenu{
+        min-width: 60%;
+        max-width: 60%;
+    }
+    .Task_H4_Regular{
+        font-size: 14px;
+    }
+}
+@media (min-width: 480px) and (max-width: 767px) and (orientation: landscape){
+    .mainContainer_SideMenu{
+        min-width: 60%;
+        max-width: 60%;
+    }
+    .Task_H4_Regular{
+        font-size: 14px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}
+@media (min-width: 480px) and (max-width: 767px){
+    .mainContainer_SideMenu{
+        min-width: 60%;
+        max-width: 60%;
+    }
+    .Task_H4_Regular{
+        font-size: 16px;
+    }
+}
+@media(max-width:319px){
+    .mainContainer_SideMenu{
+        min-width: 60%;
+        max-width: 60%;
+    }
+    .Task_H4_Regular{
+        font-size: 14px;
+    }
+}

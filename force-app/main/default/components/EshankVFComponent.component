@@ -1,0 +1,100 @@
+<apex:component >
+    <apex:slds />
+    <apex:attribute name="activeTab" description="This is the value for the component." type="String" required="false"/>  
+    <style> 
+        .mainContainer{        	
+        background-color:#002c77;              
+        } 
+        .border_Right{
+        border-right: 1px solid #ffffff;
+        }
+        .border_Right_bottom{
+        border-bottom: 1px solid #ffffff;
+        border-right: 1px solid #ffffff;
+        }
+        .borderLeftRight{
+        border-left: 1px solid #ffffff;
+        border-right: 1px solid #ffffff;
+        }
+        .inputBoxCustom{
+        background: transparent;
+        border: none;
+        font-size: 18px!important;
+        font-weight: 400!important;
+        line-height: 22px!important;
+        width: 100%
+        }
+        input.inputBoxCustom:focus {
+        outline:none;
+        }        
+        ::-webkit-input-placeholder {
+        color: #ffffff !important;
+        }
+        .mypadding{
+        padding:10px;
+        } 
+        .header1{
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        color:#ffffff;
+        }
+        .LiItems{
+        padding-left:5px;
+        padding-right:5px;
+        color:#ffffff;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        height:100%;
+        }
+        .LiItems:hover{
+        background-color:#fffffff;
+        opacity:.5;
+        }        
+        .customPadding{
+        padding:10px;
+        }       
+        
+    </style>    
+    <apex:form id="myForm">        
+        <div class="site-header slds-grid mainContainer">
+            
+            <div class="slds-col slds-size_2-of-12 border_Right">
+                <apex:outputLink value="https://caanet.org/?option=saml_user_login" >
+                    <div style="height:100%;background:yellow;">
+                        
+                    </div>
+                </apex:outputLink>
+            </div>
+            
+            <div class="slds-col slds-size_10-of-12">               
+                <div class="site-header slds-grid">
+                    <div class="slds-col slds-size_8-of-12 customPadding border_Right_bottom"> 
+                        <input type="text" maxlength="20" id="search" placeholder="Product Search" 
+                               name="keyword" class="inputBoxCustom"/>                      
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 customPadding border_Right_bottom" style="text-align: center;">
+                        <span class="header1">My Account</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 customPadding border_Right_bottom" style="text-align: center;">
+                        <span class="header1">Sign out</span>
+                    </div>
+                </div>
+                <div class="site-header slds-grid">
+                    <div class="slds-col slds-size_12-of-12 border_Right" style="height:100%">
+                        <div style="display:flex;height:100%" class="customPadding">
+                            <div class="LiItems">Browse My Topic</div>
+                            <div class="LiItems">Form And Complience</div>
+                            <div class="LiItems">Book Store</div>
+                            <div class="LiItems">Class by Category</div>
+                            <div class="LiItems">Education</div>
+                            <div class="LiItems">Resources</div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>                
+        </div>
+        
+    </apex:form>
+</apex:component>

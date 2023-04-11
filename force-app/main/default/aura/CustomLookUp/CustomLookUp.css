@@ -1,0 +1,11 @@
+.THIS .slds-leftpad{
+    padding-left: 2rem;
+}
+.THIS .iconheight{
+    top: 65%;
+}
+
+.THIS .SearchInputBox input {
+    padding-left:2rem;
+    font-size : 20px;
+}

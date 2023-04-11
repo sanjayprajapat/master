@@ -1,0 +1,50 @@
+<template>
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium"
+            aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container MyShoppingAppModal_Container">
+                <header class="slds-modal__header MyShoppingAppModal_Header">
+                    <lightning-button-icon icon-name="utility:close" class=" MyShoppingAppModal_Close"
+                        onclick={closeModal} alternative-text="close"></lightning-button-icon>
+                    <h2 id="modal-heading-01"
+                        class="slds-modal__title slds-hyphenate MyShoppingAppModal_Header_Heading">My Shopping App</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium MyShoppingAppModal_Content"
+                    id="modal-content-id-1">
+                    <span class="Task_Body2_Semibold textColor">My Shopping App Terms and Conditions</span>
+
+
+                    <p class="Task_Body2_Regular textColor slds-m-top_large">This web page represents a legal document that serves
+                        as our Terms of Service and it governs the legal terms of our websites sub-domains, and any
+                        associated web-based and mobile applications (collectively, “Website”), as owned and operated by
+                        My Shopping App. (“My Shopping App”).
+                    </p>
+
+                    <p class="Task_Body2_Regular textColor slds-m-top_large">Capitalized terms, unless otherwise defined, have the
+                        meaning specified within the Definitions section below. This Terms of Service, along with any
+                        other guidelines or rules posted within our Website, collectively “Legal Terms”, constitute the
+                        entire and only agreement between you and My Shopping App, and supersede all other agreements,
+                        representations, warranties and understandings with respect to our Website and the subject
+                        matter contained herein. We may amend our Legal Terms at any time without specific notice to
+                        you. The latest copies of our Legal Terms will be posted on our Website, and you should review
+                        all Legal Terms prior to using our Website. After any revisions to our Legal Terms are posted,
+                        you agree to be bound to any such changes to them. Therefore, it is important for you to
+                        periodically review our Legal Terms to make sure you still agree to them. These Legal Terms also
+                        incorporate our Commercial Terms and Conditionsby reference.                        
+                    </p>
+
+                    <p class="Task_Body2_Regular textColor slds-m-top_large">By using our Website, you agree to fully comply with
+                        and be bound by our Legal Terms. Please review them carefully. If you do not accept our Legal
+                        Terms, do not access and use our Website. If you have already accessed our Website and do not
+                        accept our Legal Terms, you should immediately discontinue use of our Website.
+                    </p>
+                </div>
+                <footer class="slds-modal__footer MyShoppingAppModal_Footer">
+                    <lightning-button label="Close" title="Close" onclick={closeModal}
+                        class="slds-m-left_x-small MyShoppingAppModal_CloseButton"></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>
